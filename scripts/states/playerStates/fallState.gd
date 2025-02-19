@@ -4,7 +4,7 @@ func EnterState():
 	Name = "fall"
 
 func ExitState():
-	pass
+	player.moving_plat_momentum = Vector2.ZERO
 
 func update(delta: float):
 	player.HorizontalMove(player.AIR_ACC, player.AIR_DCC)
@@ -16,6 +16,7 @@ func update(delta: float):
 	player.wall_slide_handler()
 	player.wall_grab_handler()
 	player.dash_handler()
+	player.ledge_grab_handler()
 	anim_handle()
 
 func anim_handle():

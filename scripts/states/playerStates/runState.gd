@@ -11,6 +11,7 @@ func update(delta: float):
 	player.jump_hndler()
 	player.fall_handler()
 	player.dash_handler()
+	player.one_way_drop_handler()
 	anim_handle()
 	idle_handle()
 

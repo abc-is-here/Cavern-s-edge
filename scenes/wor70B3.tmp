@@ -314,7 +314,7 @@ shader_parameter/wave_speed = 0.649
 shader_parameter/chromatic_aberration = 0.007
 shader_parameter/noise_intensity = 0.0
 shader_parameter/bubble_count = 15
-shader_parameter/bubble_size = 0.039
+shader_parameter/bubble_size = 0.2
 shader_parameter/bubble_speed = 0.652
 shader_parameter/bubble_opacity = 0.155
 
@@ -417,6 +417,7 @@ texture = ExtResource("1_i4iuy")
 stretch_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -59.0
 offset_top = 140.0
 offset_right = 210.0
@@ -503,6 +504,7 @@ texture_scale = 0.36
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_fvwd2")

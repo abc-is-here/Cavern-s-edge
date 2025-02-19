@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://bkbi2j8eywf3f"]
+[gd_scene load_steps=34 format=3 uid="uid://bkbi2j8eywf3f"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_uq6qs"]
-[ext_resource type="Texture2D" uid="uid://cm5ix6icxk8n7" path="res://Assets/Character base.png" id="2_x58bm"]
+[ext_resource type="Texture2D" uid="uid://dqrkeobbchhei" path="res://Assets/Player-spritesheet.png" id="2_10ivj"]
 [ext_resource type="Script" path="res://scripts/states/playerStates/states.gd" id="3_75mvh"]
 [ext_resource type="Script" path="res://scripts/states/playerStates/idleState.gd" id="4_lvp8e"]
 [ext_resource type="Script" path="res://scripts/states/playerStates/lockedState.gd" id="4_ple0s"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://scripts/states/playerStates/wall_grab.gd" id="12_1canq"]
 [ext_resource type="Script" path="res://scripts/states/playerStates/wall_climb.gd" id="13_to0y2"]
 [ext_resource type="Script" path="res://scripts/states/playerStates/dash_state.gd" id="14_2rtd5"]
+[ext_resource type="Script" path="res://scripts/states/playerStates/ledge_grab.gd" id="15_8eepj"]
+[ext_resource type="Script" path="res://scripts/states/playerStates/ledge_climb.gd" id="16_gwguc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_116ae"]
 radius = 4.0
@@ -49,6 +51,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7u0kg"]
@@ -133,6 +147,53 @@ tracks/0/keys = {
 "values": [48, 49, 50]
 }
 
+[sub_resource type="Animation" id="Animation_pk726"]
+resource_name = "ledge_climb"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [104, 105, 106, 107, 108]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -13), Vector2(0, -13), Vector2(0, -13), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fysx7"]
+resource_name = "ledge_grab"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [96, 97]
+}
+
 [sub_resource type="Animation" id="Animation_88juq"]
 resource_name = "run"
 length = 0.8
@@ -208,6 +269,8 @@ _data = {
 "jump": SubResource("Animation_lqsd0"),
 "jump_wall": SubResource("Animation_vvlrl"),
 "kick_wall": SubResource("Animation_vukni"),
+"ledge_climb": SubResource("Animation_pk726"),
+"ledge_grab": SubResource("Animation_fysx7"),
 "run": SubResource("Animation_88juq"),
 "wall_climb": SubResource("Animation_jq2xi"),
 "wall_grab": SubResource("Animation_0bffl"),
@@ -215,7 +278,7 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0g5w"]
-atlas = ExtResource("2_x58bm")
+atlas = ExtResource("2_10ivj")
 region = Rect2(0, 352, 32, 32)
 
 [sub_resource type="Gradient" id="Gradient_i1poi"]
@@ -225,14 +288,13 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 script = ExtResource("1_uq6qs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
-texture = ExtResource("2_x58bm")
+texture = ExtResource("2_10ivj")
 hframes = 8
 vframes = 14
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_116ae")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -280,6 +342,12 @@ script = ExtResource("13_to0y2")
 [node name="dash" type="Node" parent="state_machine"]
 script = ExtResource("14_2rtd5")
 
+[node name="ledge_grab" type="Node" parent="state_machine"]
+script = ExtResource("15_8eepj")
+
+[node name="ledge_climb" type="Node" parent="state_machine"]
+script = ExtResource("16_gwguc")
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="jump_buffer" type="Timer" parent="Timers"]
@@ -294,43 +362,70 @@ one_shot = true
 [node name="dash_buffer" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="fall_damage" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
 [node name="raycasts" type="Node2D" parent="."]
 
 [node name="wall_jump" type="Node2D" parent="raycasts"]
 
 [node name="bottom_left" type="RayCast2D" parent="raycasts/wall_jump"]
-position = Vector2(-3, 12)
+position = Vector2(-3.01, 12)
 target_position = Vector2(-3, 0)
 
 [node name="bottom_right" type="RayCast2D" parent="raycasts/wall_jump"]
-position = Vector2(3, 12)
+position = Vector2(3.01, 12)
 target_position = Vector2(3, 0)
 
 [node name="wall_climb" type="Node2D" parent="raycasts"]
 
 [node name="wall_climb_top_left" type="RayCast2D" parent="raycasts/wall_climb"]
-position = Vector2(-3, -4)
+position = Vector2(-3.01, -4)
 target_position = Vector2(-3, 0)
 
 [node name="wall_climb_bound_top_left" type="RayCast2D" parent="raycasts/wall_climb"]
-position = Vector2(-3, -5)
+position = Vector2(-3.01, -5)
 target_position = Vector2(-3, 0)
 
 [node name="wall_climb_top_right" type="RayCast2D" parent="raycasts/wall_climb"]
-position = Vector2(3, -4)
+position = Vector2(3.01, -4)
 target_position = Vector2(3, 0)
 
 [node name="wall_climb_bound_top_right" type="RayCast2D" parent="raycasts/wall_climb"]
-position = Vector2(3, -5)
+position = Vector2(3.01, -5)
 target_position = Vector2(3, 0)
 
 [node name="wall_climb_bound_bottom_left" type="RayCast2D" parent="raycasts/wall_climb"]
-position = Vector2(-3, 13)
+position = Vector2(-3.01, 13)
 target_position = Vector2(-3, 0)
 
 [node name="wall_climb_bound_bottom_right" type="RayCast2D" parent="raycasts/wall_climb"]
-position = Vector2(3, 13)
+position = Vector2(3.01, 13)
 target_position = Vector2(3, 0)
+
+[node name="ledge" type="Node2D" parent="raycasts"]
+
+[node name="ledge_right_lower" type="RayCast2D" parent="raycasts/ledge"]
+position = Vector2(1, -1)
+target_position = Vector2(4, 0)
+
+[node name="ledge_right_upper" type="RayCast2D" parent="raycasts/ledge"]
+position = Vector2(1, -6)
+target_position = Vector2(12, 0)
+
+[node name="ledge_left_lower" type="RayCast2D" parent="raycasts/ledge"]
+position = Vector2(-1, -1)
+target_position = Vector2(-4, 0)
+
+[node name="ledge_left_upper" type="RayCast2D" parent="raycasts/ledge"]
+position = Vector2(-1, -6)
+target_position = Vector2(-12, 0)
+
+[node name="fall_damage" type="Node2D" parent="raycasts"]
+
+[node name="fall_down" type="RayCast2D" parent="raycasts/fall_damage"]
+target_position = Vector2(0, 20)
 
 [node name="FX" type="Node2D" parent="."]
 
@@ -344,3 +439,5 @@ speed_scale = 3.0
 texture = SubResource("AtlasTexture_d0g5w")
 gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_i1poi")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="state_machine/ledge_climb" method="_on_animation_player_animation_finished"]

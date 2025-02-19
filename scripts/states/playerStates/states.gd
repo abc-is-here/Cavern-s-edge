@@ -11,3 +11,5 @@ extends Node
 @onready var wall_climb: Node = $wall_climb
 @onready var wall_grab: Node = $wall_grab
 @onready var dash: Node = $dash
+@onready var ledge_grab: Node = $ledge_grab
+@onready var ledge_climb: Node = $ledge_climb
