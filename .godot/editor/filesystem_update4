@@ -1,0 +1,7 @@
+res://World/World.tscn
+res://World/sub_pixel.gdshader
+res://Entity/Player/Distortion.gdshader
+res://Entity/Player/Player.tscn
+res://Entity/DyamicCamera2D/DynamicCamera2D.tscn
+res://Entity/Player/CheckPoint.tscn
+res://Entity/DyamicCamera2D/DyanimcCamera2D.gd

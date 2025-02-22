@@ -1,0 +1,14 @@
+CollisionShape2D
+Node2D
+DynamicCamera2D
+CameraZone2D
+Camera2D
+Node
+Marker2D
+Area2D
+AnimationPlayer
+Sprite2D
+ColorRect
+CanvasLayer
+PointLight2D
+WorldEnvironment

@@ -1,0 +1,56 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1740218708
+::res://Assets/::1740130384
+bk.png::CompressedTexture2D::5822186437678744284::1730571424::1740121245::1::::<><>::
+Camera2D Area Icon.svg::CompressedTexture2D::4339146324942528292::1738025350::1740121245::1::::<><>::
+Character base.png::CompressedTexture2D::7695621804966424115::1740116025::1740121245::1::::<><>::
+Icon.png::CompressedTexture2D::8950803939303502111::1740117063::1740121245::1::::<><>::
+spotlight.jpg::CompressedTexture2D::2858365152600277502::1740119593::1740121245::1::::<><>::
+Tiles 16x16.png::CompressedTexture2D::1689027477162606377::1740116833::1740121245::1::::<><>::
+::res://Entity/::1740205100
+::res://Entity/DyamicCamera2D/::1740217304
+DyanimcCamera2D.gd::GDScript::-1::1740211962::0::1::::DynamicCamera2D<>Node2D<>res://Assets/Camera2D Area Icon.svg::
+DynamicCamera2D.tscn::PackedScene::6229241570129465420::1740217304::0::1::::<><>::res://Entity/DyamicCamera2D/DyanimcCamera2D.gd
+::res://Entity/DyamicCamera2D/CameraZone2D/::1740217579
+CameraZone2D.gd::GDScript::-1::1740217579::0::1::::CameraZone2D<>Area2D<>res://Assets/Camera2D Area Icon.svg::
+CameraZone2D.tscn::PackedScene::4908961566929338157::1740210058::0::1::::<><>::res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.gd
+::res://Entity/obstacles/::1740212021
+dead_zone.gd::GDScript::-1::1740212021::0::1::::<>Area2D<>::
+::res://Entity/Player/::1740217579
+CheckPoint.gd::GDScript::-1::1740212026::0::1::::<>Area2D<>::
+CheckPoint.tscn::PackedScene::8085306403132258311::1740217304::0::1::::<><>::res://Entity/Player/CheckPoint.gd
+DashDistortion.gd::GDScript::-1::1740116165::0::1::::<>Control<>::
+DashDistortion.tscn::PackedScene::1238949284926001391::1740131373::0::1::::<><>::res://Entity/Player/Distortion.gdshader<>res://Entity/Player/DashDistortion.gd
+Distortion.gdshader::Shader::-1::1740217579::0::1::::<><>::
+Player.gd::GDScript::-1::1740209202::0::1::::PlayerController<>CharacterBody2D<>::
+Player.tscn::PackedScene::5501987851632900604::1740217304::0::1::::<><>::uid://dhv21cnwh8y4b::::res://Assets/Character base.png<>res://Entity/Player/Player.gd<>res://Entity/Player/State Machine/States.gd<>uid://cu0qx0scepfq7::::res://Entity/DyamicCamera2D/DynamicCamera2D.tscn<>res://Entity/Player/State Machine/LockedState.gd<>res://Entity/Player/State Machine/IdleState.gd<>res://Entity/Player/State Machine/RunState.gd<>res://Entity/Player/State Machine/JumpState.gd<>res://Entity/Player/State Machine/JumpPeakState.gd<>res://Entity/Player/State Machine/FallState.gd<>res://Entity/Player/State Machine/WallJumpState.gd<>res://Entity/Player/State Machine/WallGrabState.gd<>res://Entity/Player/State Machine/WallClimbState.gd<>res://Entity/Player/State Machine/WallSlideState.gd<>res://Entity/Player/State Machine/DashState.gd<>res://Entity/Player/State Machine/LedgeGrabState.gd<>res://Entity/Player/State Machine/LedgeClimbState.gd
+::res://Entity/Player/State Machine/::1740209202
+DashState.gd::GDScript::-1::1740116197::0::1::::<>PlayerState<>::
+FallState.gd::GDScript::-1::1740116207::0::1::::<>PlayerState<>::
+IdleState.gd::GDScript::-1::1740116214::0::1::::<>PlayerState<>::
+JumpPeakState.gd::GDScript::-1::1740209202::0::1::::jump_peak<>PlayerState<>::
+JumpState.gd::GDScript::-1::1740203617::0::1::::jump<>PlayerState<>::
+LedgeClimbState.gd::GDScript::-1::1740204292::0::1::::<>PlayerState<>::
+LedgeGrabState.gd::GDScript::-1::1740202961::0::1::::<>PlayerState<>::
+LockedState.gd::GDScript::-1::1730571424::0::1::::<>PlayerState<>::
+PlayerState.gd::GDScript::-1::1730571424::0::1::::PlayerState<>Node<>::
+RunState.gd::GDScript::-1::1740116666::0::1::::<>PlayerState<>::
+States.gd::GDScript::-1::1736211880::0::1::::<>Node<>::
+WallClimbState.gd::GDScript::-1::1737216731::0::1::::<>PlayerState<>::
+WallGrabState.gd::GDScript::-1::1740116728::0::1::::<>PlayerState<>::
+WallJumpState.gd::GDScript::-1::1740116757::0::1::::<>PlayerState<>::
+WallSlideState.gd::GDScript::-1::1740116836::0::1::::<>PlayerState<>::
+::res://World/::1740217579
+CheckPointManager.gd::GDScript::-1::1740207053::0::1::::<>Node<>::
+sub_pixel.gdshader::Shader::-1::1740217579::0::1::::<><>::
+World.tscn::PackedScene::1967060548200150929::1740217579::0::1::::<><>::uid://co7ktbmdpyr1u::::res://Assets/bk.png<>res://World/sub_pixel.gdshader<>res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.gd<>uid://ycgbhmit6iof::::res://Assets/Tiles 16x16.png<>uid://hupvdc3gq10u::::res://World/Platform Types/MovingPlatform/MovingPlatform.tscn<>uid://ckng63detpg81::::res://Entity/Player/Player.tscn<>uid://ct7kkabj83poi::::res://World/Platform Types/Bouncing Platform/BouncingPlatform.tscn<>uid://ddgmmpbddwwf1::::res://World/Platform Types/Resetting Platform/ResettingPlatform.tscn<>uid://bgyu4eb7id0fy::::res://Assets/spotlight.jpg<>res://Entity/obstacles/dead_zone.gd<>res://World/CheckPointManager.gd<>uid://dngt2yl5o4o5l::::res://Entity/Player/CheckPoint.tscn
+::res://World/Platform Types/::1740120898
+::res://World/Platform Types/Bouncing Platform/::1740210057
+BouncingPlatform.gd::GDScript::-1::1736211880::0::1::::<>Area2D<>::
+BouncingPlatform.tscn::PackedScene::6173114514504384496::1740210057::0::1::::<><>::res://World/Platform Types/Bouncing Platform/BouncingPlatform.gd<>uid://ycgbhmit6iof::::res://Assets/Tiles 16x16.png
+::res://World/Platform Types/MovingPlatform/::1740120898
+MovingPlatform.gd::GDScript::-1::1740116343::0::1::::MovingPlatform<>Path2D<>::
+MovingPlatform.tscn::PackedScene::533557879051450926::1737216024::0::1::::<><>::res://World/Platform Types/MovingPlatform/MovingPlatform.gd
+::res://World/Platform Types/Resetting Platform/::1740209880
+ResettingPlatform.gd::GDScript::-1::1740135370::0::1::::ResettingPlatform<>StaticBody2D<>::
+ResettingPlatform.tscn::PackedScene::7382965671494077468::1740209880::0::1::::<><>::res://World/Platform Types/Resetting Platform/ResettingPlatform.gd

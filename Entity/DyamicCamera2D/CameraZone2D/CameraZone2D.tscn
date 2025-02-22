@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb6646bvftox6"]
+
+[ext_resource type="Script" path="res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.gd" id="1_fgb5l"]
+
+[node name="CameraZone2d" type="Area2D"]
+monitoring = false
+script = ExtResource("1_fgb5l")
