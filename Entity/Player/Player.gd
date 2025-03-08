@@ -53,6 +53,8 @@ const ClimbSpeed = 30
 const MaxClimbStamina = 300
 const GrabStaminaCost = 1
 const ClimbStaminaCost = 2
+const PUSH_FORCE = 100
+const BLOCK_MAX_VELOCITY = 180
 var WallSlideSpeed = 40
 
 const MaxDashes = 1
@@ -141,6 +143,11 @@ func _physics_process(delta: float) -> void:
 	HandleMaxFallVelocity()
 	UpdateSquish()
 
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collision_block = collision.get_collider()
+		if collision_block.is_in_group("box") and abs(collision_block.get_linear_velocity().x) < BLOCK_MAX_VELOCITY:
+			collision_block.apply_central_impulse(collision.get_normal() * -PUSH_FORCE)
 	move_and_slide()
 	movingPlatformSpeed = get_platform_velocity()
 

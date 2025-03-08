@@ -1,5 +1,7 @@
-res://Entity
 res://Entity/obstacles
+res://Entity/enemies
+res://Assets
+res://Entity
 res://World
 res://
 res://World/Platform Types/MovingPlatform

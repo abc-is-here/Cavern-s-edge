@@ -6,6 +6,7 @@ var DistortionEffect = preload("res://Entity/Player/DashDistortion.tscn")
 
 func EnterState():
 	Name = "Dash"
+	Global.is_dashing = true
 	OS.delay_msec(Player.DashDelayEffect)
 	Player.dashDirection = Player.GetDashDirection()
 	Player.DashParticles.restart()
@@ -19,7 +20,7 @@ func EnterState():
 	Player.HandleFlipH()
 
 func ExitState():
-	pass
+	Global.is_dashing = false
 
 
 func Update(delta: float):

@@ -22,9 +22,9 @@ shape = SubResource("RectangleShape2D_87ks1")
 debug_color = Color(0, 0.6, 0, 0.419608)
 
 [node name="RedFlash" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="RedFlash"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

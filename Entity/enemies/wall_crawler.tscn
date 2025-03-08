@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmgp6q4l4xx03"]
+
+[ext_resource type="Texture2D" uid="uid://ccbsphy0j2ib" path="res://Assets/spikyEnemyWithoutSpikes.png" id="1_8jep5"]
+[ext_resource type="Script" path="res://Entity/enemies/wall_crawler.gd" id="1_ppsmh"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="1_x42sr"]
+
+[sub_resource type="Curve2D" id="Curve2D_xoqh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7dun"]
+size = Vector2(56, 42)
+
+[node name="WallClimber" type="Node2D"]
+script = ExtResource("1_ppsmh")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_xoqh2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+texture = ExtResource("1_8jep5")
+
+[node name="DeadZone" parent="Path2D/PathFollow2D" instance=ExtResource("1_x42sr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/DeadZone"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_s7dun")

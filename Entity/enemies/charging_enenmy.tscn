@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://w5d05r1eerfv"]
+
+[ext_resource type="Script" path="res://Entity/enemies/charging_enenmy.gd" id="1_dno2v"]
+[ext_resource type="Texture2D" uid="uid://bw41dpjckej57" path="res://Assets/spikyEnemy.png" id="1_t2tro"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="3_xh52u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxc1d"]
+size = Vector2(56, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcuoi"]
+size = Vector2(63, 46)
+
+[node name="ChargingEnenmy" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dno2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t2tro")
+
+[node name="RayCast2D2" type="RayCast2D" parent="Sprite2D"]
+position = Vector2(1, 0)
+target_position = Vector2(-125, 0)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bxc1d")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="ChargeTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="DeadZone" parent="." instance=ExtResource("3_xh52u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_tcuoi")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]

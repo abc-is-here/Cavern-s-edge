@@ -18,8 +18,8 @@ func _on_arrow_start_fall_area_entered(area: Area2D) -> void:
 
 func fall():
 	cur_speed = speed
-	await get_tree().create_timer(.5).timeout
-	reset_spike()
+	if $RayCast2D.is_colliding():
+		reset_spike()
 
 func reset_spike():
 	cur_speed = 0.0

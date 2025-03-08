@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://dild61g5vjma2"]
+
+[ext_resource type="Texture2D" uid="uid://cwjiolpy6t0kx" path="res://Assets/button.png" id="1_aqv74"]
+[ext_resource type="Script" path="res://Entity/obstacles/ButtonAndDoor.gd" id="1_mok1k"]
+[ext_resource type="Texture2D" uid="uid://dvqf343tkxvs6" path="res://Assets/button_pressed.png" id="2_pyeoo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26w13"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrmai"]
+size = Vector2(20, 40)
+
+[sub_resource type="Animation" id="Animation_07iko"]
+resource_name = "DoorClose"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 40), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_55uh0"]
+resource_name = "DoorOpen"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_7rm1l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rv6ry"]
+_data = {
+"DoorClose": SubResource("Animation_07iko"),
+"DoorOpen": SubResource("Animation_55uh0"),
+"RESET": SubResource("Animation_7rm1l")
+}
+
+[node name="buttonAndDoor" type="Node2D"]
+script = ExtResource("1_mok1k")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -2)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_26w13")
+
+[node name="button" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_aqv74")
+
+[node name="button_pressed" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_pyeoo")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -5)
+
+[node name="Door" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(44, -20)
+shape = SubResource("RectangleShape2D_xrmai")
+
+[node name="ColorRect" type="ColorRect" parent="Door"]
+offset_left = 34.0
+offset_top = -40.0
+offset_right = 54.0
+color = Color(0.394353, 0.394353, 0.394353, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rv6ry")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

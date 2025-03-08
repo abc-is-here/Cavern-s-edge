@@ -1,5 +1,6 @@
-[gd_scene load_steps=50 format=4 uid="uid://3a4g2aoliuib"]
+[gd_scene load_steps=62 format=4 uid="uid://3a4g2aoliuib"]
 
+[ext_resource type="Script" path="res://World/world.gd" id="1_gq1cl"]
 [ext_resource type="Texture2D" uid="uid://co7ktbmdpyr1u" path="res://Assets/bk.png" id="1_kagqq"]
 [ext_resource type="Shader" path="res://World/sub_pixel.gdshader" id="1_srnpc"]
 [ext_resource type="Script" path="res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.gd" id="1_v1dk3"]
@@ -26,9 +27,18 @@
 [ext_resource type="PackedScene" uid="uid://wlrs18edyoki" path="res://Entity/obstacles/immunity_power.tscn" id="24_addph"]
 [ext_resource type="PackedScene" uid="uid://tl1ke0fw03ap" path="res://Entity/bird_non_interactive.tscn" id="25_xin6k"]
 [ext_resource type="PackedScene" uid="uid://dmv27cm6rbpg" path="res://Entity/ground_animal_non_interactive.tscn" id="26_foyb1"]
+[ext_resource type="Script" path="res://World/area_change.gd" id="28_0oi7o"]
+[ext_resource type="PackedScene" uid="uid://dkp241qqs8v2m" path="res://Entity/obstacles/box.tscn" id="29_v7f3b"]
+[ext_resource type="PackedScene" uid="uid://dild61g5vjma2" path="res://Entity/obstacles/button.tscn" id="30_ba0jg"]
+[ext_resource type="PackedScene" uid="uid://spuh373xvf2p" path="res://Entity/enemies/DeadlySlime.tscn" id="31_w085g"]
+[ext_resource type="PackedScene" uid="uid://dmgp6q4l4xx03" path="res://Entity/enemies/wall_crawler.tscn" id="32_c0rbh"]
+[ext_resource type="PackedScene" uid="uid://w5d05r1eerfv" path="res://Entity/enemies/charging_enenmy.tscn" id="33_20yg7"]
+[ext_resource type="PackedScene" uid="uid://by8gtln2iyonc" path="res://Entity/enemies/spike_ejector.tscn" id="34_e8n26"]
+[ext_resource type="PackedScene" uid="uid://dmopwof65gfyu" path="res://Entity/obstacles/Laser.tscn" id="35_no81b"]
+[ext_resource type="PackedScene" uid="uid://vx0f7ytvgb36" path="res://Entity/obstacles/closing_walls.tscn" id="36_t61yy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf5qh"]
-size = Vector2(895, 778)
+size = Vector2(1120, 683)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8n66d"]
 size = Vector2(674, 771)
@@ -178,6 +188,15 @@ point_count = 7
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k3js"]
 size = Vector2(155.25, 56.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsk57"]
+size = Vector2(9, 84)
+
+[sub_resource type="Curve2D" id="Curve2D_fs7b4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 162, 0, 0, 0, 0, 0, 318, 0, 0, 0, 0, 0, -118, 0)
+}
+point_count = 4
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tnuj4"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -363,9 +382,9 @@ custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_voe86")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_gq1cl")
 
 [node name="CameraZones" type="Node2D" parent="."]
-visible = false
 
 [node name="CameraZone2D" type="Area2D" parent="CameraZones" node_paths=PackedStringArray("Zone")]
 position = Vector2(-1966, 441)
@@ -373,7 +392,7 @@ script = ExtResource("1_v1dk3")
 Zone = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/CameraZone2D"]
-position = Vector2(431.5, 392)
+position = Vector2(1310, -320.5)
 shape = SubResource("RectangleShape2D_gf5qh")
 
 [node name="CameraZone2D3" type="Area2D" parent="CameraZones" node_paths=PackedStringArray("Zone")]
@@ -568,7 +587,6 @@ position = Vector2(-1, -1)
 rotation = 1.5708
 
 [node name="FireThrowers" type="Node2D" parent="."]
-visible = false
 
 [node name="ThrowFire" parent="FireThrowers" instance=ExtResource("16_xnej4")]
 position = Vector2(-622, 363)
@@ -621,7 +639,7 @@ position = Vector2(967, -54)
 anim_delay = 2.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("CollisionMap") groups=["Player"] instance=ExtResource("3_py1gi")]
-position = Vector2(-822, 323)
+position = Vector2(-924, 410)
 collision_mask = 3
 CollisionMap = NodePath("../Tiles")
 
@@ -730,12 +748,7 @@ script = ExtResource("22_hfstp")
 color = Color(0.372549, 0.372549, 0.372549, 0.643137)
 energy = 0.8
 
-[node name="Tiles" type="TileMapLayer" parent="." groups=["TileSet"]]
-tile_map_data = PackedByteArray("AAC0/xwAAQABAAAAAAC1/xwAAQABAAAAAAC2/xwAAQABAAAAAAC3/xwAAQABAAAAAAC4/xwAAQABAAAAAAC5/xwAAQABAAAAAAC6/xwAAQABAAAAAAC7/xwAAQABAAAAAAC8/xwAAQABAAAAAAC9/xwAAQABAAAAAAC+/xwAAQABAAAAAAC//xwAAQABAAAAAADA/xwAAQABAAAAAADB/xwAAQABAAAAAADC/xwAAQABAAAAAADD/xwAAQABAAAAAADE/xwAAQABAAAAAADF/xwAAQABAAAAAADG/xwAAQABAAAAAADH/xwAAQABAAAAAADI/xwAAQABAAAAAADJ/xwAAQABAAAAAADK/xwAAQABAAAAAADL/xwAAQABAAAAAADM/xwAAQABAAAAAADN/xwAAQABAAAAAADO/xwAAQABAAAAAADP/xwAAQABAAAAAADQ/xwAAQABAAAAAADR/xwAAQABAAAAAADS/xwAAQABAAAAAADT/xwAAQABAAAAAADU/xwAAQABAAAAAADV/xwAAQABAAAAAADW/xwAAQABAAAAAADX/xwAAQABAAAAAADY/xwAAQABAAAAAADZ/xwAAQABAAAAAADa/xwAAQABAAAAAADb/xwAAQABAAAAAADc/xwAAQABAAAAAADd/xwAAQABAAAAAADe/xwAAQABAAAAAADf/xwAAQABAAAAAADg/xwAAQABAAAAAADh/xwAAQABAAAAAADi/xwAAQABAAAAAADj/xwAAQABAAAAAADk/xwAAQABAAAAAADl/xwAAQABAAAAAADm/xwAAQABAAAAAADn/xwAAQABAAAAAADo/xwAAQABAAAAAADp/xwAAQABAAAAAADq/xwAAQABAAAAAADr/xwAAQABAAAAAADs/xwAAQABAAAAAADt/xwAAQABAAAAAADu/xwAAQABAAAAAADv/xwAAQABAAAAAADw/xwAAQABAAAAAADx/xwAAQABAAAAAADy/xwAAQABAAAAAADz/xwAAQABAAAAAAD0/xwAAQABAAAAAAD1/xwAAQABAAAAAAD2/xwAAQABAAAAAAD3/xwAAQABAAAAAAD4/xwAAQABAAAAAAD5/xwAAQABAAAAAAA=")
-tile_set = SubResource("TileSet_4sgbb")
-
 [node name="ImmunityPower" parent="." instance=ExtResource("24_addph")]
-visible = false
 position = Vector2(-730, 425)
 
 [node name="BirdNonInteractive" parent="." instance=ExtResource("25_xin6k")]
@@ -744,6 +757,88 @@ position = Vector2(-653, 444)
 [node name="GroundAnimalNonInteractive" parent="." instance=ExtResource("26_foyb1")]
 position = Vector2(-440, 424)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AreaChange" type="Node2D" parent="."]
+script = ExtResource("28_0oi7o")
+
+[node name="Arena1" type="Area2D" parent="AreaChange"]
+position = Vector2(-257, 395)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaChange/Arena1"]
+position = Vector2(57, 11)
+shape = SubResource("RectangleShape2D_nsk57")
+
+[node name="Arena2" type="Area2D" parent="AreaChange"]
+position = Vector2(-549, 395)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaChange/Arena2"]
+position = Vector2(57, 11)
+shape = SubResource("RectangleShape2D_nsk57")
+
+[node name="Arena3" type="Area2D" parent="AreaChange"]
+position = Vector2(-658, 395)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaChange/Arena3"]
+position = Vector2(57, 11)
+shape = SubResource("RectangleShape2D_nsk57")
+
+[node name="Arena4" type="Area2D" parent="AreaChange"]
+position = Vector2(-923, 398)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaChange/Arena4"]
+position = Vector2(57, 11)
+shape = SubResource("RectangleShape2D_nsk57")
+
+[node name="BossFight" type="Area2D" parent="AreaChange"]
+position = Vector2(-1181, 396)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaChange/BossFight"]
+position = Vector2(57, 11)
+shape = SubResource("RectangleShape2D_nsk57")
+
+[node name="Box" parent="." instance=ExtResource("29_v7f3b")]
+position = Vector2(-1018, 414)
+
+[node name="buttonAndDoor" parent="." instance=ExtResource("30_ba0jg")]
+position = Vector2(-329, 448)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("31_w085g")]
+position = Vector2(-545, 432)
+
+[node name="WallCrawler" parent="." instance=ExtResource("32_c0rbh")]
+position = Vector2(-256, 438)
+scale = Vector2(0.5, 0.5)
+
+[node name="Path2D" parent="WallCrawler" index="0"]
+curve = SubResource("Curve2D_fs7b4")
+
+[node name="ChargingEnenmy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("33_20yg7")]
+position = Vector2(-788, 438)
+scale = Vector2(0.5, 0.5)
+player = NodePath("../Player")
+
+[node name="SpikeEjector" parent="." instance=ExtResource("34_e8n26")]
+position = Vector2(-948, 343)
+
+[node name="Laser" parent="." instance=ExtResource("35_no81b")]
+position = Vector2(-1096, 376)
+scale = Vector2(0.2, 0.2)
+
+[node name="Closing walls" parent="." instance=ExtResource("36_t61yy")]
+position = Vector2(441, 290)
+scale = Vector2(0.247353, 0.493308)
+
+[node name="Tiles" type="TileMapLayer" parent="." groups=["TileSet"]]
+tile_map_data = PackedByteArray("AAC0/xwAAQABAAAAAAC1/xwAAQABAAAAAAC2/xwAAQABAAAAAAC3/xwAAQABAAAAAAC4/xwAAQABAAAAAAC5/xwAAQABAAAAAAC6/xwAAQABAAAAAAC7/xwAAQABAAAAAAC8/xwAAQABAAAAAAC9/xwAAQABAAAAAAC+/xwAAQABAAAAAAC//xwAAQABAAAAAADA/xwAAQABAAAAAADB/xwAAQABAAAAAADC/xwAAQABAAAAAADD/xwAAQABAAAAAADE/xwAAQABAAAAAADF/xwAAQABAAAAAADG/xwAAQABAAAAAADH/xwAAQABAAAAAADI/xwAAQABAAAAAADJ/xwAAQABAAAAAADK/xwAAQABAAAAAADL/xwAAQABAAAAAADM/xwAAQABAAAAAADN/xwAAQABAAAAAADO/xwAAQABAAAAAADP/xwAAQABAAAAAADQ/xwAAQABAAAAAADR/xwAAQABAAAAAADS/xwAAQABAAAAAADT/xwAAQABAAAAAADU/xwAAQABAAAAAADV/xwAAQABAAAAAADW/xwAAQABAAAAAADX/xwAAQABAAAAAADY/xwAAQABAAAAAADZ/xwAAQABAAAAAADa/xwAAQABAAAAAADb/xwAAQABAAAAAADc/xwAAQABAAAAAADd/xwAAQABAAAAAADe/xwAAQABAAAAAADf/xwAAQABAAAAAADg/xwAAQABAAAAAADh/xwAAQABAAAAAADi/xwAAQABAAAAAADj/xwAAQABAAAAAADk/xwAAQABAAAAAADl/xwAAQABAAAAAADm/xwAAQABAAAAAADn/xwAAQABAAAAAADo/xwAAQABAAAAAADp/xwAAQABAAAAAADq/xwAAQABAAAAAADr/xwAAQABAAAAAADs/xwAAQABAAAAAADt/xwAAQABAAAAAADu/xwAAQABAAAAAADv/xwAAQABAAAAAADw/xwAAQABAAAAAADx/xwAAQABAAAAAADy/xwAAQABAAAAAADz/xwAAQABAAAAAAD0/xwAAQABAAAAAAD1/xwAAQABAAAAAAD2/xwAAQABAAAAAAD3/xwAAQABAAAAAAD4/xwAAQABAAAAAAD5/xwAAQABAAAAAAC6/xcAAQAAAAMAAAC7/xcAAQABAAMAAAC8/xcAAQACAAMAAAALAB0AAQABAAMAAAAMAB0AAQABAAMAAAANAB0AAQABAAMAAAAOAB0AAQABAAMAAAAPAB0AAQABAAMAAAAQAB0AAQABAAMAAAARAB0AAQABAAMAAAASAB0AAQABAAMAAAATAB0AAQABAAMAAAAUAB0AAQABAAMAAAAVAB0AAQABAAMAAAAWAB0AAQABAAMAAAAXAB0AAQABAAMAAAAYAB0AAQABAAMAAAAZAB0AAQABAAMAAAAaAB0AAQABAAMAAAAbAB0AAQABAAMAAAAcAB0AAQABAAMAAAAdAB0AAQABAAMAAAAeAB0AAQABAAMAAAAfAB0AAQABAAMAAAAgAB0AAQABAAMAAAAhAB0AAQABAAMAAAAiAB0AAQABAAMAAAAjAB0AAQABAAMAAAAkAB0AAQABAAMAAAAlAB0AAQABAAMAAAAmAB0AAQABAAMAAAAnAB0AAQABAAMAAAAoAB0AAQABAAMAAAApAB0AAQABAAMAAAAqAB0AAQACAAAAAAArAB4AAQABAAMAAAAsAB4AAQABAAMAAAAtAB4AAQABAAMAAAAuAB4AAQABAAMAAAAvAB4AAQABAAMAAAAwAB4AAQABAAMAAAAxAB4AAQACAAMAAAAqAB4AAQAAAAIAAAAKAB0AAQABAAMAAAAJAB0AAQABAAMAAAAIAB0AAQABAAMAAAAHAB0AAQABAAMAAAAGAB0AAQABAAMAAAAFAB0AAQABAAMAAAAEAB0AAQABAAMAAAADAB0AAQABAAMAAAACAB0AAQABAAMAAAABAB0AAQABAAMAAAAAAB0AAQABAAMAAAD//x0AAQABAAMAAAD+/x0AAQAAAAMAAAA=")
+tile_set = SubResource("TileSet_4sgbb")
+
+[connection signal="body_entered" from="AreaChange/Arena1" to="AreaChange" method="_on_arena_1_body_entered"]
+[connection signal="body_entered" from="AreaChange/Arena2" to="AreaChange" method="_on_arena_2_body_entered"]
+[connection signal="body_entered" from="AreaChange/Arena3" to="AreaChange" method="_on_arena_3_body_entered"]
+[connection signal="body_entered" from="AreaChange/Arena4" to="AreaChange" method="_on_arena_4_body_entered"]
+[connection signal="body_entered" from="AreaChange/BossFight" to="AreaChange" method="_on_boss_fight_body_entered"]
+
 [editable path="SpinningBlades/SpinningBlade"]
 [editable path="SpinningBlades/SpinningBlade2"]
 [editable path="FireThrowers/ThrowFire"]
@@ -751,3 +846,4 @@ position = Vector2(-440, 424)
 [editable path="Rocks/rock"]
 [editable path="Rocks/rock2"]
 [editable path="SpinningAttacks/SpinningWeapons"]
+[editable path="WallCrawler"]

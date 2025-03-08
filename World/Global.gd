@@ -6,3 +6,5 @@ signal RockFall
 var is_in_deadzone = false
 var is_in_water = false
 var is_immune = false
+var currentSong
+var is_dashing = false

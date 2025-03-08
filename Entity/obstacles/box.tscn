@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkp241qqs8v2m"]
+
+[ext_resource type="Texture2D" uid="uid://bq6a34uw8fen4" path="res://Assets/box.png" id="1_am0n6"]
+[ext_resource type="Script" path="res://Entity/obstacles/box.gd" id="1_gy6qh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qksrw"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huib2"]
+size = Vector2(16, 16)
+
+[node name="Box" type="RigidBody2D" groups=["box"]]
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_qksrw")
+gravity_scale = 0.8
+script = ExtResource("1_gy6qh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_am0n6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_huib2")

@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://by8gtln2iyonc"]
+
+[ext_resource type="Script" path="res://Entity/enemies/spike_ejector.gd" id="1_3f3dq"]
+[ext_resource type="Texture2D" uid="uid://b7qc83ewggfyt" path="res://Assets/BallUnspiked.png" id="2_k1ykk"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="3_1hitc"]
+[ext_resource type="Texture2D" uid="uid://cf72iccdmxqok" path="res://Assets/spike.png" id="4_sgwhi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1wild"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jpcm"]
+size = Vector2(7, 7)
+
+[node name="SpikeEjector" type="Node2D"]
+script = ExtResource("1_3f3dq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_k1ykk")
+
+[node name="DeadZone" parent="." instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+shape = SubResource("CircleShape2D_1wild")
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikes"]
+position = Vector2(0, -11)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Spikes"]
+position = Vector2(4.26326e-14, 12)
+rotation = 3.14159
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D2" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D2/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Spikes"]
+position = Vector2(-11, 0)
+rotation = -1.5708
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D3" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D3/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Spikes"]
+position = Vector2(12, 0)
+rotation = 1.5708
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D4" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D4/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Spikes"]
+position = Vector2(8, -8)
+rotation = 0.785398
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D5" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D5/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Spikes"]
+position = Vector2(-8, 8)
+rotation = 3.92699
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D6" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D6/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Spikes"]
+position = Vector2(-7.5, -7.5)
+rotation = -0.785398
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D7" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D7/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Spikes"]
+position = Vector2(8.5, 8.5)
+rotation = -3.92699
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_sgwhi")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="DeadZone" parent="Spikes/Sprite2D8" instance=ExtResource("3_1hitc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes/Sprite2D8/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_2jpcm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
