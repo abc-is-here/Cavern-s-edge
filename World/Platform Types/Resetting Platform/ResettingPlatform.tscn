@@ -15,7 +15,6 @@ script = ExtResource("1_0p2v0")
 shape = SubResource("RectangleShape2D_eocl3")
 
 [node name="Area" type="Area2D" parent="."]
-monitorable = false
 
 [node name="Detector" type="CollisionShape2D" parent="Area"]
 shape = SubResource("RectangleShape2D_36f25")

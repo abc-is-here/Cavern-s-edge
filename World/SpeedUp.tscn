@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqsune48csgid"]
+
+[ext_resource type="Texture2D" uid="uid://x7opfox2s28h" path="res://Assets/speedUp.png" id="1_7dkqe"]
+[ext_resource type="Script" path="res://speed_up.gd" id="1_p0d5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl6ft"]
+size = Vector2(53, 47)
+
+[node name="SpeedUp" type="Area2D"]
+script = ExtResource("1_p0d5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7dkqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_xl6ft")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

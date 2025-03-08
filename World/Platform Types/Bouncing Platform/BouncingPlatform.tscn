@@ -85,7 +85,6 @@ _data = {
 }
 
 [node name="BouncingPlatform" type="Area2D"]
-monitorable = false
 script = ExtResource("1_0hi8s")
 
 [node name="Collider" type="CollisionShape2D" parent="."]

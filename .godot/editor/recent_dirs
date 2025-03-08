@@ -1,4 +1,7 @@
-res://World
-res://Entity/Player
+res://Entity
 res://Entity/obstacles
+res://World
+res://
+res://World/Platform Types/MovingPlatform
+res://Entity/Player
 res://Entity/Player/State Machine

@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://wlrs18edyoki"]
+
+[ext_resource type="Script" path="res://Entity/obstacles/immunity_power.gd" id="1_6xlmj"]
+[ext_resource type="Texture2D" uid="uid://d4d5rxlcov0d8" path="res://Assets/powerUp.png" id="1_vemtg"]
+[ext_resource type="Texture2D" uid="uid://bgyu4eb7id0fy" path="res://Assets/spotlight.jpg" id="2_e8cj6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61yfq"]
+radius = 4.0
+
+[sub_resource type="Animation" id="Animation_bmi8k"]
+resource_name = "powerUp"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 4]
+}
+
+[sub_resource type="Animation" id="Animation_a57fb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tr72v"]
+_data = {
+"RESET": SubResource("Animation_a57fb"),
+"powerUp": SubResource("Animation_bmi8k")
+}
+
+[node name="ImmunityPower" type="Node2D"]
+script = ExtResource("1_6xlmj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_61yfq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_vemtg")
+hframes = 6
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D/Sprite2D"]
+color = Color(0.826225, 0.827525, 1.15514e-06, 1)
+shadow_enabled = true
+texture = ExtResource("2_e8cj6")
+texture_scale = 0.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tr72v")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

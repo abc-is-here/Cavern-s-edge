@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq5gkyouagdnj"]
+
+[ext_resource type="Script" path="res://World/Platform Types/MovingPlatform/MovingPlatform.gd" id="1_uvtnd"]
+[ext_resource type="PackedScene" uid="uid://c1khifpmd2ca7" path="res://Entity/obstacles/single_spike.tscn" id="2_3gvu2"]
+
+[sub_resource type="Curve2D" id="Curve2D_tu1ia"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2, 56, 0, 0, 0, 0, -65, 56, 0, 0, 0, 0, -64, -88, 0, 0, 0, 0, 135, -88, 0, 0, 0, 0, 137, 55, 0, 0, 0, 0, 137, 55, 0, 0, 0, 0, 2, 56)
+}
+point_count = 7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1i2q"]
+resource_local_to_scene = true
+size = Vector2(48, 9)
+
+[node name="MovingPlatformWithHiddenSpikes" type="Path2D"]
+curve = SubResource("Curve2D_tu1ia")
+script = ExtResource("1_uvtnd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(2, 56)
+rotation = 3.14159
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+update_rotation = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(2, 56)
+rotation = -3.14159
+
+[node name="SingleSpike" parent="AnimatableBody2D" instance=ExtResource("2_3gvu2")]
+position = Vector2(-16, 10)
+rotation = 3.14159
+anim_delay = 5.0
+
+[node name="SingleSpike2" parent="AnimatableBody2D" instance=ExtResource("2_3gvu2")]
+position = Vector2(16, 10)
+rotation = 3.14159
+anim_delay = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_x1i2q")

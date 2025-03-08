@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://ckng63detpg81"]
+[gd_scene load_steps=39 format=3 uid="uid://ckng63detpg81"]
 
 [ext_resource type="Texture2D" uid="uid://dhv21cnwh8y4b" path="res://Assets/Character base.png" id="1_e7d54"]
 [ext_resource type="Script" path="res://Entity/Player/Player.gd" id="1_gqhxu"]
+[ext_resource type="Shader" path="res://Entity/Player/glitch.gdshader" id="2_22s6a"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/States.gd" id="3_pqwyk"]
 [ext_resource type="PackedScene" uid="uid://cu0qx0scepfq7" path="res://Entity/DyamicCamera2D/DynamicCamera2D.tscn" id="3_s37m3"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/LockedState.gd" id="4_jim0x"]
@@ -17,6 +18,12 @@
 [ext_resource type="Script" path="res://Entity/Player/State Machine/DashState.gd" id="14_2n0fv"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/LedgeGrabState.gd" id="15_je7ob"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/LedgeClimbState.gd" id="16_ft441"]
+[ext_resource type="Texture2D" uid="uid://bgyu4eb7id0fy" path="res://Assets/spotlight.jpg" id="19_ae25c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf4u2"]
+shader = ExtResource("2_22s6a")
+shader_parameter/glitch_intensity = 3.0
+shader_parameter/glitch_frequency = 1.5
 
 [sub_resource type="Animation" id="Animation_7ahmx"]
 resource_name = "Dash"
@@ -289,10 +296,15 @@ region = Rect2(0, 352, 32, 32)
 [sub_resource type="Gradient" id="Gradient_mk772"]
 colors = PackedColorArray(1, 1, 1, 0.709804, 1, 0, 0, 0)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pcqby"]
+radius = 4.0
+height = 22.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gqhxu")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pf4u2")
 texture = ExtResource("1_e7d54")
 hframes = 8
 vframes = 14
@@ -367,54 +379,66 @@ one_shot = true
 [node name="BottomLeft" type="RayCast2D" parent="Raycasts/WallJump"]
 position = Vector2(-3.01, 12)
 target_position = Vector2(-4, 0)
+collision_mask = 3
 
 [node name="BottomRight" type="RayCast2D" parent="Raycasts/WallJump"]
 position = Vector2(3.01, 12)
 target_position = Vector2(4, 0)
+collision_mask = 3
 
 [node name="WallClimb" type="Node2D" parent="Raycasts"]
 
 [node name="TopLeft" type="RayCast2D" parent="Raycasts/WallClimb"]
 position = Vector2(-3.01, -3)
 target_position = Vector2(-4, 0)
+collision_mask = 3
 
 [node name="TopRight" type="RayCast2D" parent="Raycasts/WallClimb"]
 position = Vector2(3.01, -3)
 target_position = Vector2(4, 0)
+collision_mask = 3
 
 [node name="UpperRight" type="RayCast2D" parent="Raycasts/WallClimb"]
 position = Vector2(3.01, -4)
 target_position = Vector2(4, 0)
+collision_mask = 3
 
 [node name="UpperLeft" type="RayCast2D" parent="Raycasts/WallClimb"]
 position = Vector2(-3.01, -4)
 target_position = Vector2(-4, 0)
+collision_mask = 3
 
 [node name="LowerRight" type="RayCast2D" parent="Raycasts/WallClimb"]
 position = Vector2(3.01, 13)
 target_position = Vector2(4, 0)
+collision_mask = 3
 
 [node name="LowerLeft" type="RayCast2D" parent="Raycasts/WallClimb"]
 position = Vector2(-3.01, 13)
 target_position = Vector2(-4, 0)
+collision_mask = 3
 
 [node name="LedgeGrab" type="Node2D" parent="Raycasts"]
 
 [node name="LedgeRightLower" type="RayCast2D" parent="Raycasts/LedgeGrab"]
 position = Vector2(1, -1)
 target_position = Vector2(4, 0)
+collision_mask = 3
 
 [node name="LedgeRightUpper" type="RayCast2D" parent="Raycasts/LedgeGrab"]
 position = Vector2(1, -6)
 target_position = Vector2(12, 0)
+collision_mask = 3
 
 [node name="LedgeLeftLower" type="RayCast2D" parent="Raycasts/LedgeGrab"]
 position = Vector2(-1, -1)
 target_position = Vector2(-4, 0)
+collision_mask = 3
 
 [node name="LedgeLeftUpper" type="RayCast2D" parent="Raycasts/LedgeGrab"]
 position = Vector2(-1, -6)
 target_position = Vector2(-12, 0)
+collision_mask = 3
 
 [node name="GraphcisEffects" type="Node2D" parent="."]
 
@@ -430,5 +454,15 @@ gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_mk772")
 
 [node name="DynamicCamera2d" parent="." instance=ExtResource("3_s37m3")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("19_ae25c")
+texture_scale = 0.5
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_pcqby")
 
 [connection signal="animation_finished" from="Animator" to="StateMachine/LedgeClimb" method="_on_animator_animation_finished"]

@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1khifpmd2ca7"]
+
+[ext_resource type="Script" path="res://Entity/obstacles/single_spike.gd" id="1_eya36"]
+[ext_resource type="Texture2D" uid="uid://c5f4v7ohna843" path="res://Assets/trap.png" id="1_n8d05"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="2_hidy8"]
+
+[sub_resource type="Animation" id="Animation_gbqa4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeadZone/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeadZone/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeadZone/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_udw1v"]
+resource_name = "spikeUp"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeadZone/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.06667, 1.23333, 2.63333, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeadZone/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.06667, 2.66667, 2.76667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeadZone/CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.23333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0teq"]
+_data = {
+"RESET": SubResource("Animation_gbqa4"),
+"spikeUp": SubResource("Animation_udw1v")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eox8p"]
+size = Vector2(16, 5)
+
+[node name="SingleSpike" type="Node2D" groups=["DeathZone"]]
+position = Vector2(0, -7)
+script = ExtResource("1_eya36")
+
+[node name="DeadZone" parent="." instance=ExtResource("2_hidy8")]
+
+[node name="Sprite2D" type="Sprite2D" parent="DeadZone"]
+rotation = 3.14159
+texture = ExtResource("1_n8d05")
+hframes = 7
+frame = 1
+region_rect = Rect2(33, 0, 4, 7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeadZone"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_j0teq")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_eox8p")
+disabled = true

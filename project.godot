@@ -15,6 +15,10 @@ run/main_scene="res://World/World.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=60
 
+[autoload]
+
+Global="*res://World/Global.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -31,7 +35,11 @@ enabled=PackedStringArray()
 [global_group]
 
 Player=""
-AreaZone=""
+CheckPointManager=""
+TileSet=""
+CheckPoint=""
+DeathZone=""
+rock=""
 
 [input]
 
@@ -81,3 +89,6 @@ Dash={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.647395, 0.647395, 0.647395, 1)
+2d/sdf/oversize=2
+2d/sdf/scale=0

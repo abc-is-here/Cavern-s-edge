@@ -16,11 +16,21 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_87ks1")
 debug_color = Color(0, 0.6, 0, 0.419608)
+
+[node name="RedFlash" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="RedFlash"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.839216, 0, 0, 0.670588)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

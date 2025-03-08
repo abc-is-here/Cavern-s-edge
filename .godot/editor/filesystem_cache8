@@ -1,56 +1,107 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1740218708
-::res://Assets/::1740130384
+::res://::1740894823
+speed_up.gd::GDScript::-1::1740487057::0::1::::<>Area2D<>::
+throw_fire.gd::GDScript::-1::1740894823::0::1::::<>Node2D<>::
+::res://Assets/::1740896987
+ball.png::CompressedTexture2D::9143086941054590863::1740490116::1740490130::1::::<><>::
+bird_flying_anim_strip_3.png::CompressedTexture2D::3220814049660812997::1740896987::1740896987::1::::<><>::
+bird_idle_anim_strip_8.png::CompressedTexture2D::5452785531210479623::1740896987::1740896987::1::::<><>::
 bk.png::CompressedTexture2D::5822186437678744284::1730571424::1740121245::1::::<><>::
 Camera2D Area Icon.svg::CompressedTexture2D::4339146324942528292::1738025350::1740121245::1::::<><>::
 Character base.png::CompressedTexture2D::7695621804966424115::1740116025::1740121245::1::::<><>::
+checkPlate.png::CompressedTexture2D::6403593254419661240::1740321813::1740321814::1::::<><>::
+fullWhite.png::CompressedTexture2D::6344416895632894042::1740670648::1740670648::1::::<><>::
 Icon.png::CompressedTexture2D::8950803939303502111::1740117063::1740121245::1::::<><>::
+orb_anim_strip_6.png::CompressedTexture2D::3707936110685594428::1740321950::1740321950::1::::<><>::
+powerUp.png::CompressedTexture2D::9202784743264134643::1740895274::1740895274::1::::<><>::
+rabit_idle_anim_strip_4.png::CompressedTexture2D::729776270120533423::1740896987::1740896987::1::::<><>::
+rabit_walk_anim_strip_6.png::CompressedTexture2D::5262890591307829262::1740896987::1740896987::1::::<><>::
+sawblade.png::CompressedTexture2D::1237112543193480714::1740311182::1740311182::1::::<><>::
+speedUp.png::CompressedTexture2D::1681280601937809781::1740485018::1740485024::1::::<><>::
+spike.png::CompressedTexture2D::5191499427151784958::1740375168::1740375168::1::::<><>::
 spotlight.jpg::CompressedTexture2D::2858365152600277502::1740119593::1740121245::1::::<><>::
+ThrowFire.png::CompressedTexture2D::8145808655586688291::1740312862::1740312863::1::::<><>::
 Tiles 16x16.png::CompressedTexture2D::1689027477162606377::1740116833::1740121245::1::::<><>::
+Transition.png::CompressedTexture2D::947951858168830198::1740484684::1740484704::1::::<><>::
+trap.png::CompressedTexture2D::6890628562469628714::1740309915::1740309915::1::::<><>::
+trap_suspended.png::CompressedTexture2D::1609901555351637791::1591033766::1740306321::1::::<><>::
+WindLine.png::CompressedTexture2D::1795912886352744205::1740667124::1740667124::1::::<><>::
 ::res://Entity/::1740205100
-::res://Entity/DyamicCamera2D/::1740217304
-DyanimcCamera2D.gd::GDScript::-1::1740211962::0::1::::DynamicCamera2D<>Node2D<>res://Assets/Camera2D Area Icon.svg::
-DynamicCamera2D.tscn::PackedScene::6229241570129465420::1740217304::0::1::::<><>::res://Entity/DyamicCamera2D/DyanimcCamera2D.gd
+::res://Entity/DyamicCamera2D/::1740826647
+DyanimcCamera2D.gd::GDScript::-1::1740674047::0::1::::DynamicCamera2D<>Node2D<>res://Assets/Camera2D Area Icon.svg::
+DynamicCamera2D.tscn::PackedScene::6229241570129465420::1740826647::0::1::::<><>::res://Entity/DyamicCamera2D/DyanimcCamera2D.gd
 ::res://Entity/DyamicCamera2D/CameraZone2D/::1740217579
 CameraZone2D.gd::GDScript::-1::1740217579::0::1::::CameraZone2D<>Area2D<>res://Assets/Camera2D Area Icon.svg::
 CameraZone2D.tscn::PackedScene::4908961566929338157::1740210058::0::1::::<><>::res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.gd
-::res://Entity/obstacles/::1740212021
-dead_zone.gd::GDScript::-1::1740212021::0::1::::<>Area2D<>::
-::res://Entity/Player/::1740217579
-CheckPoint.gd::GDScript::-1::1740212026::0::1::::<>Area2D<>::
-CheckPoint.tscn::PackedScene::8085306403132258311::1740217304::0::1::::<><>::res://Entity/Player/CheckPoint.gd
-DashDistortion.gd::GDScript::-1::1740116165::0::1::::<>Control<>::
-DashDistortion.tscn::PackedScene::1238949284926001391::1740131373::0::1::::<><>::res://Entity/Player/Distortion.gdshader<>res://Entity/Player/DashDistortion.gd
-Distortion.gdshader::Shader::-1::1740217579::0::1::::<><>::
-Player.gd::GDScript::-1::1740209202::0::1::::PlayerController<>CharacterBody2D<>::
-Player.tscn::PackedScene::5501987851632900604::1740217304::0::1::::<><>::uid://dhv21cnwh8y4b::::res://Assets/Character base.png<>res://Entity/Player/Player.gd<>res://Entity/Player/State Machine/States.gd<>uid://cu0qx0scepfq7::::res://Entity/DyamicCamera2D/DynamicCamera2D.tscn<>res://Entity/Player/State Machine/LockedState.gd<>res://Entity/Player/State Machine/IdleState.gd<>res://Entity/Player/State Machine/RunState.gd<>res://Entity/Player/State Machine/JumpState.gd<>res://Entity/Player/State Machine/JumpPeakState.gd<>res://Entity/Player/State Machine/FallState.gd<>res://Entity/Player/State Machine/WallJumpState.gd<>res://Entity/Player/State Machine/WallGrabState.gd<>res://Entity/Player/State Machine/WallClimbState.gd<>res://Entity/Player/State Machine/WallSlideState.gd<>res://Entity/Player/State Machine/DashState.gd<>res://Entity/Player/State Machine/LedgeGrabState.gd<>res://Entity/Player/State Machine/LedgeClimbState.gd
-::res://Entity/Player/State Machine/::1740209202
-DashState.gd::GDScript::-1::1740116197::0::1::::<>PlayerState<>::
-FallState.gd::GDScript::-1::1740116207::0::1::::<>PlayerState<>::
-IdleState.gd::GDScript::-1::1740116214::0::1::::<>PlayerState<>::
-JumpPeakState.gd::GDScript::-1::1740209202::0::1::::jump_peak<>PlayerState<>::
-JumpState.gd::GDScript::-1::1740203617::0::1::::jump<>PlayerState<>::
-LedgeClimbState.gd::GDScript::-1::1740204292::0::1::::<>PlayerState<>::
-LedgeGrabState.gd::GDScript::-1::1740202961::0::1::::<>PlayerState<>::
-LockedState.gd::GDScript::-1::1730571424::0::1::::<>PlayerState<>::
-PlayerState.gd::GDScript::-1::1730571424::0::1::::PlayerState<>Node<>::
-RunState.gd::GDScript::-1::1740116666::0::1::::<>PlayerState<>::
-States.gd::GDScript::-1::1736211880::0::1::::<>Node<>::
-WallClimbState.gd::GDScript::-1::1737216731::0::1::::<>PlayerState<>::
-WallGrabState.gd::GDScript::-1::1740116728::0::1::::<>PlayerState<>::
-WallJumpState.gd::GDScript::-1::1740116757::0::1::::<>PlayerState<>::
-WallSlideState.gd::GDScript::-1::1740116836::0::1::::<>PlayerState<>::
-::res://World/::1740217579
-CheckPointManager.gd::GDScript::-1::1740207053::0::1::::<>Node<>::
-sub_pixel.gdshader::Shader::-1::1740217579::0::1::::<><>::
-World.tscn::PackedScene::1967060548200150929::1740217579::0::1::::<><>::uid://co7ktbmdpyr1u::::res://Assets/bk.png<>res://World/sub_pixel.gdshader<>res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.gd<>uid://ycgbhmit6iof::::res://Assets/Tiles 16x16.png<>uid://hupvdc3gq10u::::res://World/Platform Types/MovingPlatform/MovingPlatform.tscn<>uid://ckng63detpg81::::res://Entity/Player/Player.tscn<>uid://ct7kkabj83poi::::res://World/Platform Types/Bouncing Platform/BouncingPlatform.tscn<>uid://ddgmmpbddwwf1::::res://World/Platform Types/Resetting Platform/ResettingPlatform.tscn<>uid://bgyu4eb7id0fy::::res://Assets/spotlight.jpg<>res://Entity/obstacles/dead_zone.gd<>res://World/CheckPointManager.gd<>uid://dngt2yl5o4o5l::::res://Entity/Player/CheckPoint.tscn
-::res://World/Platform Types/::1740120898
-::res://World/Platform Types/Bouncing Platform/::1740210057
-BouncingPlatform.gd::GDScript::-1::1736211880::0::1::::<>Area2D<>::
-BouncingPlatform.tscn::PackedScene::6173114514504384496::1740210057::0::1::::<><>::res://World/Platform Types/Bouncing Platform/BouncingPlatform.gd<>uid://ycgbhmit6iof::::res://Assets/Tiles 16x16.png
-::res://World/Platform Types/MovingPlatform/::1740120898
-MovingPlatform.gd::GDScript::-1::1740116343::0::1::::MovingPlatform<>Path2D<>::
-MovingPlatform.tscn::PackedScene::533557879051450926::1737216024::0::1::::<><>::res://World/Platform Types/MovingPlatform/MovingPlatform.gd
-::res://World/Platform Types/Resetting Platform/::1740209880
+::res://Entity/obstacles/::1740896741
+animatable_body_2d.gd::GDScript::-1::1740465600::0::1::::<>AnimatableBody2D<>::
+ball.gd::GDScript::-1::1740666143::0::1::::Stone<>CharacterBody2D<>::
+Ball.tscn::PackedScene::5538325028071619492::1740826647::0::1::::<><>::res://Entity/obstacles/ball.gd<>uid://d3i8kn34bni7x::::res://Assets/ball.png<>res://Entity/obstacles/FreeBall.gd<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn
+dead_zone.gd::GDScript::-1::1740896464::0::1::::<>Area2D<>::
+dead_zone.tscn::PackedScene::2464890404512935050::1740576428::0::1::::<><>::res://Entity/obstacles/dead_zone.gd
+falling_spikes.gd::GDScript::-1::1740556038::0::1::::<>Node2D<>::
+falling_spikes.tscn::PackedScene::424411392531275083::1740553632::0::1::::<><>::res://Entity/obstacles/falling_spikes.gd<>uid://cf72iccdmxqok::::res://Assets/spike.png<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn
+FreeBall.gd::GDScript::-1::1740736993::0::1::::<>Node2D<>::
+moving_platform_with_hidden_spikes.tscn::PackedScene::5958177641208774783::1740466284::0::1::::<><>::res://World/Platform Types/MovingPlatform/MovingPlatform.gd<>uid://c1khifpmd2ca7::::res://Entity/obstacles/single_spike.tscn
+moving_platform_with_spikes.tscn::PackedScene::3721371248945137336::1740466285::0::1::::<><>::res://World/Platform Types/MovingPlatform/MovingPlatform.gd<>res://Entity/obstacles/falling_spikes.gd<>uid://cf72iccdmxqok::::res://Assets/spike.png<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn
+immunity_power.tscn::PackedScene::1567928465271048004::1740896741::0::1::::<><>::res://Entity/obstacles/immunity_power.gd<>uid://d4d5rxlcov0d8::::res://Assets/powerUp.png<>uid://bgyu4eb7id0fy::::res://Assets/spotlight.jpg
+immunity_power.gd::GDScript::-1::1740896738::0::1::::<>Node2D<>::
+single_spike.gd::GDScript::-1::1740384020::0::1::::<>Node2D<>::
+single_spike.tscn::PackedScene::6618834671155360880::1740553644::0::1::::<><>::res://Entity/obstacles/single_spike.gd<>uid://c5f4v7ohna843::::res://Assets/trap.png<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn
+spikes.tscn::PackedScene::3723559343361665235::1740384148::0::1::::<><>::uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn<>uid://c5f4v7ohna843::::res://Assets/trap.png
+spinning_blade.gd::GDScript::-1::1740312056::0::1::::<>Node2D<>::
+spinning_blade.tscn::PackedScene::575111697043690126::1740553607::0::1::::<><>::uid://rvjcev7as3f7::::res://Assets/sawblade.png<>res://Entity/obstacles/spinning_blade.gd<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn
+spinning_weapons.gd::GDScript::-1::1740823192::0::1::::<>Node2D<>::
+spinning_weapons.tscn::PackedScene::99423008417260550::1740826681::0::1::::<><>::res://Entity/obstacles/spinning_weapons.gd<>uid://dob5jp42mjgr8::::res://Assets/ThrowFire.png<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn<>uid://bgyu4eb7id0fy::::res://Assets/spotlight.jpg
+SwingTrap.gd::GDScript::-1::1740310679::0::1::::<>Node2D<>::
+swing_trap.tscn::PackedScene::2651654266163915292::1740553579::0::1::::<><>::res://Entity/obstacles/SwingTrap.gd<>uid://w633w8jiktxv::::res://Assets/trap_suspended.png<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn
+ThrowFire.tscn::PackedScene::5854158024793762239::1740896740::0::1::::<><>::res://throw_fire.gd<>uid://bbeanc4v8nole::::res://Entity/obstacles/dead_zone.tscn<>uid://dob5jp42mjgr8::::res://Assets/ThrowFire.png<>uid://bgyu4eb7id0fy::::res://Assets/spotlight.jpg
+::res://Entity/Player/::1740896843
+CheckPoint.gd::GDScript::-1::1740826104::0::1::::<>Area2D<>::
+CheckPoint.tscn::PackedScene::8085306403132258311::1740826649::0::1::::<><>::res://Entity/Player/CheckPoint.gd<>uid://cxh7ilug1f6jc::::res://Assets/checkPlate.png<>uid://bs3ffv5y15rv5::::res://Assets/orb_anim_strip_6.png<>uid://bgyu4eb7id0fy::::res://Assets/spotlight.jpg
+DashDistortion.gd::GDScript::-1::1740220914::0::1::::<>Control<>::
+DashDistortion.tscn::PackedScene::1238949284926001391::1740828207::0::1::::<><>::res://Entity/Player/Distortion.gdshader<>res://Entity/Player/DashDistortion.gd
+Distortion.gdshader::Shader::-1::1740896843::0::1::::<><>::
+glitch.gdshader::Shader::-1::1740896843::0::1::::<><>::
+Player.gd::GDScript::-1::1740827407::0::1::::PlayerController<>CharacterBody2D<>::
+Player.tscn::PackedScene::5501987851632900604::1740896740::0::1::::<><>::uid://dhv21cnwh8y4b::::res://Assets/Character base.png<>res://Entity/Player/Player.gd<>res://Entity/Player/glitch.gdshader<>res://Entity/Player/State Machine/States.gd<>uid://cu0qx0scepfq7::::res://Entity/DyamicCamera2D/DynamicCamera2D.tscn<>res://Entity/Player/State Machine/LockedState.gd<>res://Entity/Player/State Machine/IdleState.gd<>res://Entity/Player/State Machine/RunState.gd<>res://Entity/Player/State Machine/JumpState.gd<>res://Entity/Player/State Machine/JumpPeakState.gd<>res://Entity/Player/State Machine/FallState.gd<>res://Entity/Player/State Machine/WallJumpState.gd<>res://Entity/Player/State Machine/WallGrabState.gd<>res://Entity/Player/State Machine/WallClimbState.gd<>res://Entity/Player/State Machine/WallSlideState.gd<>res://Entity/Player/State Machine/DashState.gd<>res://Entity/Player/State Machine/LedgeGrabState.gd<>res://Entity/Player/State Machine/LedgeClimbState.gd<>uid://bgyu4eb7id0fy::::res://Assets/spotlight.jpg
+::res://Entity/Player/State Machine/::1740573802
+DashState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+FallState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+IdleState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+JumpPeakState.gd::GDScript::-1::1740220914::0::1::::jump_peak<>PlayerState<>::
+JumpState.gd::GDScript::-1::1740220914::0::1::::jump<>PlayerState<>::
+LedgeClimbState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+LedgeGrabState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+LockedState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+PlayerState.gd::GDScript::-1::1740220914::0::1::::PlayerState<>Node<>::
+RunState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+States.gd::GDScript::-1::1740220914::0::1::::<>Node<>::
+WallClimbState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+WallGrabState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+WallJumpState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+WallSlideState.gd::GDScript::-1::1740220914::0::1::::<>PlayerState<>::
+::res://World/::1740896843
+BGBlur.gdshader::Shader::-1::1740896843::0::1::::<><>::
+CheckPointManager.gd::GDScript::-1::1740556094::0::1::::<>Node<>::
+DayNightCycle.gd::GDScript::-1::1740815704::0::1::::<>CanvasModulate<>::
+Global.gd::GDScript::-1::1740896314::0::1::::<>Node<>::
+GodRays.gdshader::Shader::-1::1740896843::0::1::::<><>::
+SpeedUp.tscn::PackedScene::8320680160432475195::1740489199::0::1::::<><>::uid://x7opfox2s28h::::res://Assets/speedUp.png<>res://speed_up.gd
+sub_pixel.gdshader::Shader::-1::1740896843::0::1::::<><>::
+TrailFollow.gd::GDScript::-1::1740667573::0::1::::TrailFollow2D<>PathFollow2D<>::
+tryShader.gdshader::Shader::-1::1740896843::0::1::::<><>::
+water.gd::GDScript::-1::1740826718::0::1::::<>Area2D<>::
+water.gdshader::Shader::-1::1740896843::0::1::::<><>::
+water.tscn::PackedScene::9149930756202106349::1740828206::0::1::::<><>::res://World/water.gd<>res://World/water.gdshader<>uid://cwnjvb7ss8sms::::res://Assets/fullWhite.png
+World.tscn::PackedScene::1967060548200150929::1740896843::0::1::::<><>::uid://co7ktbmdpyr1u::::res://Assets/bk.png<>res://World/sub_pixel.gdshader<>res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.gd<>uid://ycgbhmit6iof::::res://Assets/Tiles 16x16.png<>uid://hupvdc3gq10u::::res://World/Platform Types/MovingPlatform/MovingPlatform.tscn<>uid://ckng63detpg81::::res://Entity/Player/Player.tscn<>uid://ct7kkabj83poi::::res://World/Platform Types/Bouncing Platform/BouncingPlatform.tscn<>uid://ddgmmpbddwwf1::::res://World/Platform Types/Resetting Platform/ResettingPlatform.tscn<>res://World/CheckPointManager.gd<>uid://dngt2yl5o4o5l::::res://Entity/Player/CheckPoint.tscn<>uid://bd1qmgiw6mxqq::::res://Entity/obstacles/swing_trap.tscn<>uid://btbyqi8yfnwpf::::res://Entity/obstacles/spikes.tscn<>uid://iguagrdqhd2u::::res://Entity/obstacles/spinning_blade.tscn<>uid://cpn2elh7wejcx::::res://Entity/obstacles/ThrowFire.tscn<>uid://gbt81vsqjxx0::::res://Entity/obstacles/falling_spikes.tscn<>uid://btawo8sceqjpw::::res://Entity/obstacles/moving_platform_with_spikes.tscn<>uid://c1khifpmd2ca7::::res://Entity/obstacles/single_spike.tscn<>uid://cq5gkyouagdnj::::res://Entity/obstacles/moving_platform_with_hidden_spikes.tscn<>uid://dqsune48csgid::::res://World/SpeedUp.tscn<>uid://ck52n0c5qa501::::res://Entity/obstacles/Ball.tscn<>uid://d3mka1jq8cw6x::::res://World/water.tscn<>res://World/DayNightCycle.gd<>uid://bofqnxe5e8b7::::res://Entity/obstacles/spinning_weapons.tscn<>uid://wlrs18edyoki::::res://Entity/obstacles/immunity_power.tscn
+::res://World/Platform Types/::1740385176
+::res://World/Platform Types/Bouncing Platform/::1740489199
+BouncingPlatform.gd::GDScript::-1::1740485177::0::1::::<>Area2D<>::
+BouncingPlatform.tscn::PackedScene::6173114514504384496::1740489199::0::1::::<><>::res://World/Platform Types/Bouncing Platform/BouncingPlatform.gd<>uid://ycgbhmit6iof::::res://Assets/Tiles 16x16.png
+::res://World/Platform Types/MovingPlatform/::1740463410
+MovingPlatform.gd::GDScript::-1::1740462281::0::1::::MovingPlatform<>Path2D<>::
+MovingPlatform.tscn::PackedScene::533557879051450926::1740463410::0::1::::<><>::res://World/Platform Types/MovingPlatform/MovingPlatform.gd
+::res://World/Platform Types/Resetting Platform/::1740235888
 ResettingPlatform.gd::GDScript::-1::1740135370::0::1::::ResettingPlatform<>StaticBody2D<>::
-ResettingPlatform.tscn::PackedScene::7382965671494077468::1740209880::0::1::::<><>::res://World/Platform Types/Resetting Platform/ResettingPlatform.gd
+ResettingPlatform.tscn::PackedScene::7382965671494077468::1740235888::0::1::::<><>::res://World/Platform Types/Resetting Platform/ResettingPlatform.gd

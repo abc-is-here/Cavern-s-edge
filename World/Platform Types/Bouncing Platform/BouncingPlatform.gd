@@ -7,15 +7,8 @@ extends Area2D
 @export_category("Bounce Properties")
 @export var bounceAmount: float = 1.5
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Animator.play("Normal")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if (body is PlayerController):

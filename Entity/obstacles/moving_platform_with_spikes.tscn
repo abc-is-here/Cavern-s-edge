@@ -1,0 +1,312 @@
+[gd_scene load_steps=11 format=3 uid="uid://btawo8sceqjpw"]
+
+[ext_resource type="Script" path="res://World/Platform Types/MovingPlatform/MovingPlatform.gd" id="1_5c5x6"]
+[ext_resource type="Script" path="res://Entity/obstacles/falling_spikes.gd" id="2_3nxnb"]
+[ext_resource type="Texture2D" uid="uid://cf72iccdmxqok" path="res://Assets/spike.png" id="3_2ijp7"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="4_okgau"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t40yo"]
+size = Vector2(7, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvnmp"]
+size = Vector2(20, 79)
+
+[sub_resource type="Animation" id="Animation_a50g2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_jswb5"]
+resource_name = "SpikeShake"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, 5), Vector2(0, 5), Vector2(-1, 5), Vector2(-2, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7qqk"]
+_data = {
+"RESET": SubResource("Animation_a50g2"),
+"SpikeShake": SubResource("Animation_jswb5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mat1m"]
+resource_local_to_scene = true
+size = Vector2(48, 9)
+
+[node name="MovingPlatformWithSpikes" type="Path2D"]
+script = ExtResource("1_5c5x6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../AnimatableBody2D")
+update_rotation = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="FallingSpikes" type="Node2D" parent="AnimatableBody2D"]
+
+[node name="FallingSpike" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(-21, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike" instance=ExtResource("4_okgau")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike/ArrowStartFall"]
+position = Vector2(-1, 36)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="FallingSpike2" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(-15, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike2"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike2" instance=ExtResource("4_okgau")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike2/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike2/ArrowStartFall"]
+position = Vector2(-0.5, 36.5)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike2"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="FallingSpike3" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(-9, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike3"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike3" instance=ExtResource("4_okgau")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike3/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike3/ArrowStartFall"]
+position = Vector2(-0.5, 36.5)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike3"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="FallingSpike4" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(-3, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike4"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike4" instance=ExtResource("4_okgau")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike4/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike4/ArrowStartFall"]
+position = Vector2(-0.5, 36.5)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike4"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="FallingSpike5" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(3, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike5"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike5" instance=ExtResource("4_okgau")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike5/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike5/ArrowStartFall"]
+position = Vector2(-0.5, 36.5)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike5"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="FallingSpike6" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(9, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike6"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike6" instance=ExtResource("4_okgau")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike6/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike6/ArrowStartFall"]
+position = Vector2(-0.5, 36.5)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike6"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="FallingSpike7" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(15, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike7"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike7" instance=ExtResource("4_okgau")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike7/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike7/ArrowStartFall"]
+position = Vector2(-0.5, 36.5)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike7"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="FallingSpike8" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
+position = Vector2(21, 7)
+script = ExtResource("2_3nxnb")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike8"]
+position = Vector2(-1, 5)
+rotation = -3.14159
+texture = ExtResource("3_2ijp7")
+hframes = 2
+
+[node name="DeadZone" parent="AnimatableBody2D/FallingSpikes/FallingSpike8" instance=ExtResource("4_okgau")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike8/DeadZone"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_t40yo")
+
+[node name="ArrowStartFall" type="Area2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike8/ArrowStartFall"]
+position = Vector2(-0.5, 36.5)
+shape = SubResource("RectangleShape2D_bvnmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D/FallingSpikes/FallingSpike8"]
+libraries = {
+"": SubResource("AnimationLibrary_i7qqk")
+}
+speed_scale = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_mat1m")
+
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike" method="_on_arrow_start_fall_area_entered"]
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike2/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike2" method="_on_arrow_start_fall_area_entered"]
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike3/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike3" method="_on_arrow_start_fall_area_entered"]
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike4/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike4" method="_on_arrow_start_fall_area_entered"]
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike5/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike5" method="_on_arrow_start_fall_area_entered"]
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike6/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike6" method="_on_arrow_start_fall_area_entered"]
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike7/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike7" method="_on_arrow_start_fall_area_entered"]
+[connection signal="area_entered" from="AnimatableBody2D/FallingSpikes/FallingSpike8/ArrowStartFall" to="AnimatableBody2D/FallingSpikes/FallingSpike8" method="_on_arrow_start_fall_area_entered"]

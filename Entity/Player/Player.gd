@@ -30,18 +30,18 @@ class_name PlayerController extends CharacterBody2D
 @export var CollisionMap: TileMapLayer
 
 const RunSpeed = 120
-const WallJumpHSpeed = 120
+var WallJumpHSpeed = 120
 const GroundAcceleration = 20
 const GroundDeceleration = 25
 const AirAcceleration = 15
 const AirDeceleration = 20
 const WallKickAcceleration = 4
-const GravityJump = 600
-const GravityFall = 700
+var GravityJump = 600
+var GravityFall = 700
 const MaxFallVelocity = 300
 
-const JumpVelocity = -240
-const WallJumpVelocity = -190
+var JumpVelocity = -240
+var WallJumpVelocity = -190
 const WallJumpAcceleration = 5
 const WallJumpYSpeedPeak = 0
 const VariableJumpMultiplier = 0.5
@@ -53,7 +53,7 @@ const ClimbSpeed = 30
 const MaxClimbStamina = 300
 const GrabStaminaCost = 1
 const ClimbStaminaCost = 2
-const WallSlideSpeed = 40
+var WallSlideSpeed = 40
 
 const MaxDashes = 1
 const DashSpeed = 300
@@ -112,6 +112,8 @@ var keyDash = false
 var currentState = null
 var previousState = null
 var nextState = null
+
+var swim_jump_velocity = -100
 
 func _ready():
 	for state in States.get_children():
@@ -175,20 +177,26 @@ func HandleGravity(delta, gravity: float = GravityJump):
 
 
 func HandleJump():
-	if (is_on_floor()):
-		if (jumps < MaxJumps):
-			if (keyJumpPressed):
-				jumps += 1
-				ChangeState(States.Jump)
-			if (JumpBufferTimer.time_left > 0):
-				JumpBufferTimer.stop()
-				ChangeState(States.Jump)
-	else:
-		if ((jumps < MaxJumps) and (jumps > 0) and keyJumpPressed):
+	if is_on_floor():
+		jumps = 0  # Reset jumps when touching the ground
+		if jumps < MaxJumps and keyJumpPressed:
 			jumps += 1
 			ChangeState(States.Jump)
-		if (CoyoteTimer.time_left > 0):
-			if ((keyJumpPressed) and (jumps < MaxJumps)):
+		if JumpBufferTimer.time_left > 0:
+			JumpBufferTimer.stop()
+			ChangeState(States.Jump)
+
+	elif Global.is_in_water:  # Swimming logic
+		if keyJumpPressed:
+			velocity.y = swim_jump_velocity  # Apply swimming jump velocity
+			jumps += 1  # Allow multiple jumps while in water
+
+	else:  # Normal air jump logic
+		if jumps < MaxJumps and jumps > 0 and keyJumpPressed:
+			jumps += 1
+			ChangeState(States.Jump)
+		if CoyoteTimer.time_left > 0:
+			if keyJumpPressed and jumps < MaxJumps:
 				CoyoteTimer.stop()
 				jumps += 1
 				ChangeState(States.Jump)
