@@ -1,13 +1,34 @@
-extends RigidBody2D
+extends CharacterBody2D
 
-#@export var push_force: float = 5.0  # Adjust push strength
-#
-#func _ready() -> void:
-	#contact_monitor = true
-	#max_contacts_reported = 5
-#
-#func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	#for body in get_colliding_bodies():
-		#if body.is_in_group("Player"):  # Check if the player is touching
-			#var direction = (global_position - body.global_position).normalized()
-			#state.apply_force(-direction * push_force)  # Apply a force instead of impulse
+var push = false
+var dir = 0
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") 
+
+func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y += gravity * delta 
+
+	if push:
+		velocity.x = dir * 1500*delta
+	else:
+		velocity.x = 0
+
+	move_and_slide()
+
+func _on_left_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		dir = 1
+		push = true
+
+func _on_left_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		push = false
+
+func _on_right_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		dir = -1
+		push = true
+
+func _on_right_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		push = false

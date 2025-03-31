@@ -1,8 +1,10 @@
+C:/Users/ACER/Desktop/export
 res://Entity/obstacles
-res://Entity/enemies
-res://Assets
-res://Entity
 res://World
+res://Assets
+res://Entity/enemies
+res://World/Platform Types
+res://Entity
 res://
 res://World/Platform Types/MovingPlatform
 res://Entity/Player

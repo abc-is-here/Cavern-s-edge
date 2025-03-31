@@ -1,45 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://vx0f7ytvgb36"]
+[gd_scene load_steps=12 format=3 uid="uid://vx0f7ytvgb36"]
 
 [ext_resource type="Script" path="res://Entity/obstacles/closing_area.gd" id="1_58dlv"]
 [ext_resource type="Texture2D" uid="uid://cf72iccdmxqok" path="res://Assets/spike.png" id="2_6mels"]
 [ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="2_iu0sn"]
+[ext_resource type="Texture2D" uid="uid://bshueiysv4ad3" path="res://Assets/tileset.png" id="2_qeutn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2kqg"]
 size = Vector2(353, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vokhr"]
-size = Vector2(83, 361)
+size = Vector2(71.5, 353)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdvut"]
 size = Vector2(6, 356)
-
-[sub_resource type="Animation" id="Animation_umvos"]
-resource_name = "Open_Walls"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Left_wall:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(219, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Right_wall:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-250, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_rfexs"]
 resource_name = "Close_Walls"
@@ -67,6 +40,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-250, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_umvos"]
+resource_name = "Open_Walls"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left_wall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(219, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right_wall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-250, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cbh0w"]
@@ -117,13 +118,15 @@ shape = SubResource("RectangleShape2D_a2kqg")
 [node name="StaticBody2D" type="StaticBody2D" parent="Left_wall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left_wall/StaticBody2D"]
-position = Vector2(41.5, 180.5)
+position = Vector2(44.5, 176.5)
 shape = SubResource("RectangleShape2D_vokhr")
 
-[node name="ColorRect" type="ColorRect" parent="Left_wall/StaticBody2D"]
-offset_right = 83.0
-offset_bottom = 360.0
-color = Color(0.827451, 0.270588, 0.262745, 1)
+[node name="ColorRect" type="Sprite2D" parent="Left_wall/StaticBody2D"]
+position = Vector2(46, 171)
+scale = Vector2(5, 11)
+texture = ExtResource("2_qeutn")
+region_enabled = true
+region_rect = Rect2(160, 15, 16, 33)
 
 [node name="Spikesprites" type="Node2D" parent="Left_wall"]
 
@@ -258,15 +261,15 @@ shape = SubResource("RectangleShape2D_hdvut")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Right_wall"]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Right_wall/StaticBody2D2"]
-position = Vector2(596, 182)
+position = Vector2(593.25, 182)
 shape = SubResource("RectangleShape2D_vokhr")
 
-[node name="ColorRect" type="ColorRect" parent="Right_wall/StaticBody2D2"]
-offset_left = 551.0
-offset_top = -1.0
-offset_right = 639.0
-offset_bottom = 359.0
-color = Color(0.827546, 0.271166, 0.261842, 1)
+[node name="ColorRect2" type="Sprite2D" parent="Right_wall/StaticBody2D2"]
+position = Vector2(589, 171)
+scale = Vector2(5, 11)
+texture = ExtResource("2_qeutn")
+region_enabled = true
+region_rect = Rect2(160, 15, 16, 33)
 
 [node name="Spikesprites2" type="Node2D" parent="Right_wall"]
 position = Vector2(634, 351)

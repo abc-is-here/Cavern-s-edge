@@ -9,6 +9,8 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	position.y += cur_speed * delta
+	if $RayCast2D.is_colliding():
+		reset_spike()
 
 func _on_arrow_start_fall_area_entered(area: Area2D) -> void:
 	if area.get_parent() is PlayerController:
@@ -18,8 +20,6 @@ func _on_arrow_start_fall_area_entered(area: Area2D) -> void:
 
 func fall():
 	cur_speed = speed
-	if $RayCast2D.is_colliding():
-		reset_spike()
 
 func reset_spike():
 	cur_speed = 0.0

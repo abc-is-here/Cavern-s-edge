@@ -1,14 +1,14 @@
 extends Node2D
 
 func _process(delta: float) -> void:
-	$Sprite2D.rotation_degrees+=1
-	$Sprite2D2.rotation_degrees+=1
-	$Sprite2D3.rotation_degrees+=1
-	$Sprite2D4.rotation_degrees+=1
-	$Sprite2D5.rotation_degrees+=1
-	$Sprite2D6.rotation_degrees+=1
-	$Sprite2D7.rotation_degrees+=1
-	$Sprite2D8.rotation_degrees+=1
+	$Sprite2D.rotation_degrees+=20
+	$Sprite2D2.rotation_degrees+=20
+	$Sprite2D3.rotation_degrees+=20
+	$Sprite2D4.rotation_degrees+=20
+	$Sprite2D5.rotation_degrees+=20
+	$Sprite2D6.rotation_degrees+=20
+	$Sprite2D7.rotation_degrees+=20
+	$Sprite2D8.rotation_degrees+=20
 	$RotationPoints.rotation_degrees+=1
 	$Sprite2D.global_position = $RotationPoints/Marker2D.global_position
 	$Sprite2D2.global_position = $RotationPoints/Marker2D2.global_position

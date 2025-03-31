@@ -1,0 +1,218 @@
+[gd_scene load_steps=14 format=3 uid="uid://dg2ch70wtpmuj"]
+
+[ext_resource type="Script" path="res://World/main_menu.gd" id="1_1xvny"]
+[ext_resource type="Texture2D" uid="uid://drda2l40mihep" path="res://Assets/GameName.png" id="1_7jo07"]
+[ext_resource type="Texture2D" uid="uid://c6ibm55gkmqdq" path="res://Assets/buttons.png" id="2_i5jqb"]
+[ext_resource type="Texture2D" uid="uid://bgyu4eb7id0fy" path="res://Assets/spotlight.jpg" id="4_nkrxh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0cpv"]
+atlas = ExtResource("2_i5jqb")
+region = Rect2(252, 0, 545, 349)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8cci"]
+atlas = ExtResource("2_i5jqb")
+region = Rect2(884, 0, 541, 338)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ybm"]
+atlas = ExtResource("2_i5jqb")
+region = Rect2(233, 619, 542, 359)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kqkm"]
+atlas = ExtResource("2_i5jqb")
+region = Rect2(862, 614, 547, 354)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w6ed"]
+atlas = ExtResource("2_i5jqb")
+region = Rect2(231, 1318, 544, 333)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pamy3"]
+atlas = ExtResource("2_i5jqb")
+region = Rect2(862, 1308, 543, 344)
+
+[sub_resource type="Animation" id="Animation_srlho"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.805844, 0, 0.190904, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1023, 597), Vector2(421, 179)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Name:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.26993]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Name:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="Animation" id="Animation_cpdt1"]
+resource_name = "start"
+length = 10000.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.805844, 0, 0.190904, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1036, 599), Vector2(421, 179)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Name:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.26993, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Name:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qrgtq"]
+_data = {
+"RESET": SubResource("Animation_srlho"),
+"start": SubResource("Animation_cpdt1")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1xvny")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 639.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 155.0
+offset_bottom = 360.0
+color = Color(0, 0.301574, 0.504281, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_right = 160.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[node name="Name" type="Sprite2D" parent="."]
+position = Vector2(1023, 597)
+rotation = -0.26993
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_7jo07")
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 1
+offset_left = 68.0
+offset_top = 130.0
+offset_right = 613.0
+offset_bottom = 479.0
+scale = Vector2(0.3, 0.3)
+texture_normal = SubResource("AtlasTexture_y0cpv")
+texture_pressed = SubResource("AtlasTexture_s8cci")
+
+[node name="Settings" type="TextureButton" parent="."]
+layout_mode = 1
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 554.0
+offset_bottom = 366.0
+scale = Vector2(0.3, 0.3)
+texture_normal = SubResource("AtlasTexture_g3ybm")
+texture_pressed = SubResource("AtlasTexture_5kqkm")
+
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 249.0
+offset_right = 552.0
+offset_bottom = 598.0
+scale = Vector2(0.3, 0.3)
+texture_normal = SubResource("AtlasTexture_3w6ed")
+texture_pressed = SubResource("AtlasTexture_pamy3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qrgtq")
+}
+autoplay = "start"
+speed_scale = 0.6
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(339, 38)
+texture = ExtResource("4_nkrxh")
+texture_scale = 0.46
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

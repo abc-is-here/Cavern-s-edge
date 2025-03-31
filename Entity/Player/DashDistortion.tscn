@@ -66,6 +66,3 @@ color = Color(1, 1, 1, 0.12549)
 libraries = {
 "": SubResource("AnimationLibrary_ve4r6")
 }
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.1

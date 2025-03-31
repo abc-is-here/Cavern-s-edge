@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7y6o302jv6ci"]
+
+[ext_resource type="Script" path="res://Entity/obstacles/laser_line.gd" id="1_unia2"]
+[ext_resource type="Texture2D" uid="uid://brsq5gc7fulqb" path="res://Assets/Wall.png" id="1_wahwg"]
+[ext_resource type="Shader" path="res://Entity/obstacles/LaserLine.gdshader" id="3_knbuq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjtvk"]
+shader = ExtResource("3_knbuq")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bq4ow"]
+b = Vector2(50, 0)
+
+[node name="LaserLine" type="Node2D"]
+script = ExtResource("1_unia2")
+
+[node name="Reference" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_wahwg")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(16, 0)
+target_position = Vector2(57, 0)
+collision_mask = 3
+
+[node name="Line2D" type="Line2D" parent="."]
+material = SubResource("ShaderMaterial_mjtvk")
+position = Vector2(16, 0)
+points = PackedVector2Array(0, 0, 50, 0)
+default_color = Color(0.984281, 0, 0.197256, 1)
+texture_mode = 2
+
+[node name="Area2D" type="Area2D" parent="Line2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/Area2D"]
+shape = SubResource("SegmentShape2D_bq4ow")

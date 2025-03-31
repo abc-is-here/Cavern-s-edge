@@ -89,21 +89,26 @@ collision_mask = 2
 script = ExtResource("2_isx6d")
 
 [node name="Idle" type="Sprite2D" parent="GroundAnimalsNonInteractive"]
+visible = false
+modulate = Color(0.735797, 0.735797, 0.735797, 1)
 texture = ExtResource("1_88jlh")
 hframes = 4
 
 [node name="Run" type="Sprite2D" parent="GroundAnimalsNonInteractive"]
-visible = false
+modulate = Color(0.737255, 0.737255, 0.737255, 1)
 texture = ExtResource("2_rhhfr")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundAnimalsNonInteractive"]
+visible = false
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_e00n3")
 
 [node name="Area2D" type="Area2D" parent="GroundAnimalsNonInteractive"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundAnimalsNonInteractive/Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_udfey")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

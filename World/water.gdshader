@@ -7,7 +7,7 @@ shader_type canvas_item;
 uniform float uv_scale : hint_range(0.0, 10.0, 0.1) = 1.0;
 uniform float color_alpha : hint_range(0.0, 1.0, 0.1) = 1.0;
 
-vec2 hash( vec2 p ) // replace this by something better
+vec2 hash( vec2 p )
 {
     p = vec2( dot(p,vec2(127.1,311.7)), dot(p,vec2(269.5,183.3)) );
     return -1.0 + 2.0*fract(sin(p)*43758.5453123);
@@ -15,8 +15,8 @@ vec2 hash( vec2 p ) // replace this by something better
 
 float noise( in vec2 p )
 {
-    const float K1 = 0.366025404; // (sqrt(3)-1)/2;
-    const float K2 = 0.211324865; // (3-sqrt(3))/6;
+    const float K1 = 0.366025404;
+    const float K2 = 0.211324865;
 
     vec2  i = floor( p + (p.x+p.y)*K1 );
     vec2  a = p - i + (i.x+i.y)*K2;
@@ -34,24 +34,17 @@ float noise( in vec2 p )
 #define TAU 6.28318
 #define PHI 1.618
 
-// closed form normal would increase performance a lot
 float height(vec2 p, float t) {
     float acc = 0.0;
     for (int i = 0; i < MAX_WAVES; i++) {
     for (int j = 0; j < SUPERPOSITION; j++) {
         int seed = i + 5*j;
-        //float theta = TAU * noise(vec2(0.01 * t, 10.0*float(i)));
         float theta = TAU * PHI * 10.0*float(seed);
         float up = cos(theta) * p.x - sin(theta) * p.y;
         float vp = sin(theta) * p.x + cos(theta) * p.y;
-        //float initial_phase = TAU * noise(vec2(0.0, 2.0*float(i))) + cos(vp);
         float initial_phase = TAU * PHI * float(seed);
-        //float k = pow(2.0, float(i)*0.1) + 0.5;
-        //float k = pow(2.0, 1.0 + 0.4*float(i));
         float k = pow(2.0, float(i));
-        //float k = float(i+1);
         float phase = initial_phase + up*k + cos(vp) + 3.0*t + 0.5*k*t;
-        // its kinda like choose your artifacts, probably use noise for vp
         float A = cos(phase)/(k*k);
         acc += A;
     }}
@@ -65,8 +58,6 @@ vec4 hn_fdm(vec2 p, float t) {
   float hy = height(p+vy, t);
   float dx = (hx - h);
   float dy = (hy - h);
-  // vec3 norm = normalize(vec3(-dx, -dy, dx+dy));
-  // vec3 norm = normalize(vec3(-dx/vx.x, -dy/vy.y, 1.0));
 
   vec3 v1 = normalize(vec3(vx.x, 0.0, dx));
   vec3 v2 = normalize(vec3(0.0, vy.y, dy));
@@ -90,7 +81,6 @@ void fragment()
     vec4 sky_colour = vec4(0.2, 0.6, 0.8, 1.0);
     vec4 specular_colour = vec4(1.0, 1.0, 1.0, 1.0);
 
-    //fragColor = vec4(norm.xyz, 1.0); return;
     
     if (dot(sun_dir, norm) > 0.98) {
         fragColor = specular_colour;

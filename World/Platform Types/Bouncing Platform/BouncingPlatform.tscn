@@ -1,15 +1,15 @@
 [gd_scene load_steps=10 format=3 uid="uid://ct7kkabj83poi"]
 
 [ext_resource type="Script" path="res://World/Platform Types/Bouncing Platform/BouncingPlatform.gd" id="1_0hi8s"]
-[ext_resource type="Texture2D" uid="uid://ycgbhmit6iof" path="res://Assets/Tiles 16x16.png" id="2_m72a3"]
+[ext_resource type="Texture2D" uid="uid://bshueiysv4ad3" path="res://Assets/tileset.png" id="2_bu5ny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7sph"]
 resource_local_to_scene = true
 size = Vector2(16, 4)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtb01"]
-atlas = ExtResource("2_m72a3")
-region = Rect2(48, 208, 96, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ed1s"]
+atlas = ExtResource("2_bu5ny")
+region = Rect2(0, 145, 95, 15)
 
 [sub_resource type="Animation" id="Animation_g7nht"]
 resource_name = "Launch"
@@ -93,7 +93,7 @@ shape = SubResource("RectangleShape2D_f7sph")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
-texture = SubResource("AtlasTexture_gtb01")
+texture = SubResource("AtlasTexture_0ed1s")
 hframes = 6
 
 [node name="Animator" type="AnimationPlayer" parent="."]

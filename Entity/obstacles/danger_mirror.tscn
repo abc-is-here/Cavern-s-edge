@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce364cbg7ouoi"]
+
+[ext_resource type="Script" path="res://Entity/obstacles/danger_mirror.gd" id="1_erp0r"]
+[ext_resource type="Texture2D" uid="uid://cf72iccdmxqok" path="res://Assets/spike.png" id="2_cvw4l"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="2_o2kdr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ub3yw"]
+size = Vector2(111, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjqff"]
+size = Vector2(6.5, 3.5)
+
+[node name="DangerMirror" type="Node2D"]
+z_index = -2
+script = ExtResource("1_erp0r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 111.0
+offset_bottom = 65.0
+color = Color(0.752582, 0.752582, 0.752582, 0.54902)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(55.5, 32.5)
+shape = SubResource("RectangleShape2D_ub3yw")
+
+[node name="obstacle" type="Sprite2D" parent="."]
+position = Vector2(31, 61)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cvw4l")
+
+[node name="DeadZone" parent="." instance=ExtResource("2_o2kdr")]
+position = Vector2(18, 63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+shape = SubResource("RectangleShape2D_hjqff")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://ckng63detpg81"]
+[gd_scene load_steps=40 format=3 uid="uid://ckng63detpg81"]
 
 [ext_resource type="Texture2D" uid="uid://dhv21cnwh8y4b" path="res://Assets/Character base.png" id="1_e7d54"]
 [ext_resource type="Script" path="res://Entity/Player/Player.gd" id="1_gqhxu"]
 [ext_resource type="Shader" path="res://Entity/Player/glitch.gdshader" id="2_22s6a"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/States.gd" id="3_pqwyk"]
 [ext_resource type="PackedScene" uid="uid://cu0qx0scepfq7" path="res://Entity/DyamicCamera2D/DynamicCamera2D.tscn" id="3_s37m3"]
+[ext_resource type="Texture2D" uid="uid://d824g7rv31bi" path="res://Assets/Player-spritesheet.png" id="3_y2vvv"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/LockedState.gd" id="4_jim0x"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/IdleState.gd" id="5_ge4yc"]
 [ext_resource type="Script" path="res://Entity/Player/State Machine/RunState.gd" id="5_knb1c"]
@@ -305,7 +306,17 @@ script = ExtResource("1_gqhxu")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pf4u2")
-texture = ExtResource("1_e7d54")
+texture = ExtResource("3_y2vvv")
+hframes = 8
+vframes = 14
+
+[node name="reflection" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.494118)
+z_index = -1
+material = SubResource("ShaderMaterial_pf4u2")
+position = Vector2(13, 0)
+texture = ExtResource("3_y2vvv")
 hframes = 8
 vframes = 14
 
@@ -456,8 +467,12 @@ color_ramp = SubResource("Gradient_mk772")
 [node name="DynamicCamera2d" parent="." instance=ExtResource("3_s37m3")]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -12)
+color = Color(1, 0.329412, 0.309804, 1)
+energy = 0.4
+shadow_enabled = true
 texture = ExtResource("19_ae25c")
-texture_scale = 0.5
+texture_scale = 0.3
 
 [node name="HitBox" type="Area2D" parent="."]
 

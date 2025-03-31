@@ -1,19 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqsune48csgid"]
+[gd_scene load_steps=7 format=3 uid="uid://dqsune48csgid"]
 
-[ext_resource type="Texture2D" uid="uid://x7opfox2s28h" path="res://Assets/speedUp.png" id="1_7dkqe"]
 [ext_resource type="Script" path="res://speed_up.gd" id="1_p0d5x"]
+[ext_resource type="Texture2D" uid="uid://cdwh83g6bi3fy" path="res://Assets/speed-Sheet.png" id="2_gahsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xl6ft"]
 size = Vector2(53, 47)
+
+[sub_resource type="Animation" id="Animation_qy2bv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_evcgl"]
+resource_name = "speed"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2daky"]
+_data = {
+"RESET": SubResource("Animation_qy2bv"),
+"speed": SubResource("Animation_evcgl")
+}
 
 [node name="SpeedUp" type="Area2D"]
 script = ExtResource("1_p0d5x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7dkqe")
+scale = Vector2(3, 3)
+texture = ExtResource("2_gahsl")
+hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 1.5)
 shape = SubResource("RectangleShape2D_xl6ft")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2daky")
+}
+autoplay = "speed"
+speed_scale = 1.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

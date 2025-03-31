@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4bmpomov63qw"]
+
+[ext_resource type="Texture2D" uid="uid://cykkfjo8xnqb1" path="res://Assets/bubble.png" id="1_3u0uu"]
+[ext_resource type="Script" path="res://Entity/obstacles/bubble.gd" id="1_cx6o3"]
+[ext_resource type="Script" path="res://Entity/obstacles/BubbleMove.gd" id="2_wlaes"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ex8mu"]
+radius = 26.0192
+
+[node name="Bubble" type="Node2D"]
+script = ExtResource("1_cx6o3")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("2_wlaes")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_3u0uu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+polygon = PackedVector2Array(-23, -42, -26, -40, -29, -38, -32, -35, -35, -32, -37, -29, -40, -24, -43, -17, -45, -13, -45, -3, -44, 9, -40, 20, -33, 30, -20, 40, -4, 45, 11, 44, 27, 37, 42, 23, 48, 6, 48, -10, 42, -28, 30, -39, 16, -47, -3, -49, -18, -45, -16, -42, -4, -45, 17, -41, 35, -28, 42, -3, 39, 16, 11, 40, -19, 37, -42, 9, -40, -17)
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_ex8mu")
+
+[node name="ResetTimer" type="Timer" parent="CharacterBody2D"]
+wait_time = 30.0
+autostart = true
+
+[connection signal="body_entered" from="CharacterBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="CharacterBody2D/ResetTimer" to="CharacterBody2D" method="_on_reset_timer_timeout"]

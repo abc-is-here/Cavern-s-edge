@@ -15,3 +15,7 @@ func _on_ball_end_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and stone_in_area:
 		Global.emit_signal("RockFall")
+
+
+func _on_timer_timeout() -> void:
+	position = $Marker2D.global_position

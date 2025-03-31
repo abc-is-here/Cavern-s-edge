@@ -7,6 +7,7 @@ resource_local_to_scene = true
 size = Vector2(48, 9)
 
 [node name="MovingPlatform" type="Path2D"]
+texture_filter = 1
 script = ExtResource("1_jwj8t")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
@@ -19,6 +20,7 @@ update_rotation = false
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+region_rect = Rect2(0, 192, 48, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_pq7pl")

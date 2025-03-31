@@ -32,12 +32,10 @@ rotation = -3.14159
 [node name="SingleSpike" parent="AnimatableBody2D" instance=ExtResource("2_3gvu2")]
 position = Vector2(-16, 10)
 rotation = 3.14159
-anim_delay = 5.0
 
 [node name="SingleSpike2" parent="AnimatableBody2D" instance=ExtResource("2_3gvu2")]
 position = Vector2(16, 10)
 rotation = 3.14159
-anim_delay = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 

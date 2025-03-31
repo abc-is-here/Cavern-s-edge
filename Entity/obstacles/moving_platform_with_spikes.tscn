@@ -94,6 +94,10 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike"]
+target_position = Vector2(0, 5)
+collision_mask = 2
+
 [node name="FallingSpike2" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
 position = Vector2(-15, 7)
 script = ExtResource("2_3nxnb")
@@ -122,6 +126,10 @@ libraries = {
 "": SubResource("AnimationLibrary_i7qqk")
 }
 speed_scale = 2.0
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike2"]
+target_position = Vector2(0, 5)
+collision_mask = 2
 
 [node name="FallingSpike3" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
 position = Vector2(-9, 7)
@@ -152,6 +160,10 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike3"]
+target_position = Vector2(0, 5)
+collision_mask = 2
+
 [node name="FallingSpike4" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
 position = Vector2(-3, 7)
 script = ExtResource("2_3nxnb")
@@ -180,6 +192,10 @@ libraries = {
 "": SubResource("AnimationLibrary_i7qqk")
 }
 speed_scale = 2.0
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike4"]
+target_position = Vector2(0, 5)
+collision_mask = 2
 
 [node name="FallingSpike5" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
 position = Vector2(3, 7)
@@ -210,6 +226,10 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike5"]
+target_position = Vector2(0, 5)
+collision_mask = 2
+
 [node name="FallingSpike6" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
 position = Vector2(9, 7)
 script = ExtResource("2_3nxnb")
@@ -238,6 +258,10 @@ libraries = {
 "": SubResource("AnimationLibrary_i7qqk")
 }
 speed_scale = 2.0
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike6"]
+target_position = Vector2(0, 5)
+collision_mask = 2
 
 [node name="FallingSpike7" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
 position = Vector2(15, 7)
@@ -268,6 +292,10 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike7"]
+target_position = Vector2(0, 5)
+collision_mask = 2
+
 [node name="FallingSpike8" type="Node2D" parent="AnimatableBody2D/FallingSpikes"]
 position = Vector2(21, 7)
 script = ExtResource("2_3nxnb")
@@ -296,6 +324,10 @@ libraries = {
 "": SubResource("AnimationLibrary_i7qqk")
 }
 speed_scale = 2.0
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatableBody2D/FallingSpikes/FallingSpike8"]
+target_position = Vector2(0, 5)
+collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
 

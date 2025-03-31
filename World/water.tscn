@@ -1,13 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3mka1jq8cw6x"]
+[gd_scene load_steps=4 format=3 uid="uid://d3mka1jq8cw6x"]
 
 [ext_resource type="Script" path="res://World/water.gd" id="1_qr3tk"]
-[ext_resource type="Shader" path="res://World/water.gdshader" id="2_d8502"]
-[ext_resource type="Texture2D" uid="uid://cwnjvb7ss8sms" path="res://Assets/fullWhite.png" id="3_yqqbs"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qttv"]
-shader = ExtResource("2_d8502")
-shader_parameter/uv_scale = 4.4
-shader_parameter/color_alpha = 0.6
+[ext_resource type="Texture2D" uid="uid://cuoy7wgygknuv" path="res://Assets/water.png" id="2_u4umd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uo3lk"]
 size = Vector2(642, 348)
@@ -15,23 +9,17 @@ size = Vector2(642, 348)
 [node name="Water" type="Area2D"]
 script = ExtResource("1_qr3tk")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_7qttv")
-offset_right = 642.0
-offset_bottom = 363.0
-color = Color(0, 0.560784, 0.756863, 0.505882)
+[node name="Sprite2D" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.219608)
+offset_top = 10.0
+offset_right = 641.0
+offset_bottom = 358.0
+texture = ExtResource("2_u4umd")
+stretch_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(321, 184)
 shape = SubResource("RectangleShape2D_uo3lk")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(319, 92)
-scale = Vector2(1.23409, 0.7525)
-energy = 0.8
-shadow_enabled = true
-texture = ExtResource("3_yqqbs")
-texture_scale = 0.4
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

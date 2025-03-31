@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://ck52n0c5qa501"]
+
+[ext_resource type="Script" path="res://Entity/obstacles/ball.gd" id="1_4y116"]
+[ext_resource type="Script" path="res://Entity/obstacles/FreeBall.gd" id="1_u67hy"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="2_fkuvc"]
+[ext_resource type="Texture2D" uid="uid://bshueiysv4ad3" path="res://Assets/tileset.png" id="3_sqib4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olct0"]
+atlas = ExtResource("3_sqib4")
+region = Rect2(103, 8, 51, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oh0rv"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ma44"]
+radius = 12.0416
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lo4s5"]
+size = Vector2(219, 8.25)
+
+[node name="Rock" type="Node2D" groups=["DeathZone", "rock"]]
+script = ExtResource("1_u67hy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_4y116")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.48, 0.48)
+texture = SubResource("AtlasTexture_olct0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_oh0rv")
+
+[node name="DeadZone" parent="CharacterBody2D" instance=ExtResource("2_fkuvc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DeadZone"]
+shape = SubResource("CircleShape2D_6ma44")
+
+[node name="RCs" type="Node2D" parent="CharacterBody2D"]
+
+[node name="LeftRC" type="RayCast2D" parent="CharacterBody2D/RCs"]
+target_position = Vector2(-26, 0)
+collision_mask = 3
+
+[node name="righRc" type="RayCast2D" parent="CharacterBody2D/RCs"]
+target_position = Vector2(24, 0)
+collision_mask = 3
+
+[node name="BallEnd" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallEnd"]
+position = Vector2(1, 94)
+shape = SubResource("RectangleShape2D_lo4s5")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="BallEnd" to="." method="_on_ball_end_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

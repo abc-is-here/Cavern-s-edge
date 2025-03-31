@@ -1,0 +1,44 @@
+res://Entity/DyamicCamera2D/CameraZone2D/CameraZone2D.tscn::b477ba277dfe53debe31f91abf4a1257::1740900287::res://.godot/exported/133200997/export-5301f18ceaefe0103985394191eedc96-CameraZone2D.scn
+res://Entity/DyamicCamera2D/DynamicCamera2D.tscn::fb6654e9cc334f1b3dec3ac1e0cde893::1740930081::res://.godot/exported/133200997/export-495198566221316b64215352e9c8b0c6-DynamicCamera2D.scn
+res://Entity/enemies/charging_enenmy.tscn::e077af9c02a37f4ea860caf0fbc568cf::1742830522::res://.godot/exported/133200997/export-472ade6ac4e510a15c083dcc878477e4-charging_enenmy.scn
+res://Entity/enemies/DeadlySlime.tscn::c2e79e6e639bb2a72e3e7845cde27033::1742830521::res://.godot/exported/133200997/export-59325867dc5c4b207258ce291d987003-DeadlySlime.scn
+res://Entity/enemies/ghost.tscn::61403dadaf649fbad82e88510fb3c710::1742881461::res://.godot/exported/133200997/export-b2d31fb8e2f099288d8936acd80a761f-ghost.scn
+res://Entity/enemies/spike_ejector.tscn::7ae08d49266d25b37f1421ea8b6b2e01::1742738609::res://.godot/exported/133200997/export-bf27b631fb490fe6d2e41d37e8e24377-spike_ejector.scn
+res://Entity/enemies/wall_crawler.tscn::bdaf6b3ded2bad8d5e0a06957e7b27e4::1741069818::res://.godot/exported/133200997/export-2bb31cd81d4c1f11cebfc7c6d1081258-wall_crawler.scn
+res://Entity/obstacles/Ball.tscn::40d55207b45763f948853ab501b5aa0d::1743232070::res://.godot/exported/133200997/export-270415de707ab9402d439553582392e9-Ball.scn
+res://Entity/obstacles/box.tscn::88ebf32330211237da1a2654d971afe9::1742826294::res://.godot/exported/133200997/export-6d2943a22b0f87f6babcce9803d2e698-box.scn
+res://Entity/obstacles/bubble.tscn::3e2c6d3302beaf4be0b26bda4cf73fb5::1742830521::res://.godot/exported/133200997/export-6d6787ad49da842d23143f9ebfe4a6f5-bubble.scn
+res://Entity/obstacles/button.tscn::169dbabc35fd4df6980a6437e47f8c85::1743333187::res://.godot/exported/133200997/export-7cb899adcca68eef6f12249b0ba4ff03-button.scn
+res://Entity/obstacles/closing_walls.tscn::efec5614da544489c4714e0fc71524fb::1742739310::res://.godot/exported/133200997/export-cfcfe1c79ad8debcd8b07e21b53e0368-closing_walls.scn
+res://Entity/obstacles/danger_mirror.tscn::d91bacfc278f90d7aee0db077760e91d::1741581974::res://.godot/exported/133200997/export-58a265ad1d58e60634ebd405e050a073-danger_mirror.scn
+res://Entity/obstacles/dead_zone.tscn::2aeb5b94fad4bbe45d32d3ca947d5d62::1743333186::res://.godot/exported/133200997/export-7eb9cd9172058eb2636ea757d9618368-dead_zone.scn
+res://Entity/obstacles/falling_spikes.tscn::55147706ae2b4ce9ba6d8333d71fdeba::1742816775::res://.godot/exported/133200997/export-1fd83690119171d764ae1a0fd9d92e2e-falling_spikes.scn
+res://Entity/obstacles/immunity_power.tscn::41a0e1961d531fee063f827b3fcd193d::1742816511::res://.godot/exported/133200997/export-f9f43c4ac49d4b09af73a0b7d14636e9-immunity_power.scn
+res://Entity/obstacles/Laser.tscn::f42586444bfa4aaecd7068a52319fd2e::1742815987::res://.godot/exported/133200997/export-161ea2b239a5749c03f0e92d636e1129-Laser.scn
+res://Entity/obstacles/laser_line.tscn::fb930a354cc9c4ff7d4c87d2a4927f0a::1741941895::res://.godot/exported/133200997/export-9fead53b51c23ff31ad2703ab61d2cd6-laser_line.scn
+res://Entity/obstacles/lava_drops.tscn::eafa6e7c89fd235354dea54b67aaaf57::1742815854::res://.godot/exported/133200997/export-a760989a471f6e19d8ed122bfe74ff6c-lava_drops.scn
+res://Entity/obstacles/moving_platform_with_hidden_spikes.tscn::8197f0fe07dd199779cdbf56f09bea9b::1742814337::res://.godot/exported/133200997/export-dfe11f67109de745fa046f26341aafab-moving_platform_with_hidden_spikes.scn
+res://Entity/obstacles/moving_platform_with_spikes.tscn::86dbcbb69e1b02e866e91edb0adabc23::1742814298::res://.godot/exported/133200997/export-1436b009d32da5af7353e901696c2ce0-moving_platform_with_spikes.scn
+res://Entity/obstacles/door.tscn::e7cb1a89582b39635a4d86898dc71905::1743328105::res://.godot/exported/133200997/export-29738bc05aa386a47240ba50e415f136-door.scn
+res://Entity/obstacles/reverse_zone.tscn::713e948ca8387a16fb13f1ecbf0a9106::1742816775::res://.godot/exported/133200997/export-8d3863fea70da238c1b4b79525967241-reverse_zone.scn
+res://Entity/obstacles/simple_spike.tscn::7a2f3de66c9c1759d342002feafb2faa::1743246760::res://.godot/exported/133200997/export-f22bf335a00032eebb3246ac93f6c8e1-simple_spike.scn
+res://Entity/obstacles/single_spike.tscn::4f5c2095747a287857be5c83b3808345::1742787934::res://.godot/exported/133200997/export-1ea46259fd933bd0bd1ffdd74814e656-single_spike.scn
+res://Entity/obstacles/spikes.tscn::ed6a441371fabe0c5e2a883f022be051::1742812558::res://.godot/exported/133200997/export-9b45427568b5ee2046f80dbe6d951c58-spikes.scn
+res://Entity/obstacles/spinning_blade.tscn::e495e34ea27dd957be267e969ab65b5d::1743333186::res://.godot/exported/133200997/export-aa25fcb674af02def21244a99d9b8331-spinning_blade.scn
+res://Entity/obstacles/spinning_weapons.tscn::a1ddbd8d21228322eadcd2fac916c160::1742811248::res://.godot/exported/133200997/export-ded9b9d322c0928fe5a90451095bc5ce-spinning_weapons.scn
+res://Entity/obstacles/swing_trap.tscn::e94900c6fef3a08c5c916ada9688d39c::1742810735::res://.godot/exported/133200997/export-4dd32e705d21d3891868b6ccefdbe242-swing_trap.scn
+res://Entity/obstacles/ThrowFire.tscn::a2fef479b07dfab441b245876646b342::1742884736::res://.godot/exported/133200997/export-f96320269082b6b668b8080e8e67feee-ThrowFire.scn
+res://Entity/obstacles/time_slower.tscn::74cd6e45611bf6fc076b6e97b3bd83ba::1742740440::res://.godot/exported/133200997/export-dac5cef3e087886718cb2bc2da91f2e4-time_slower.scn
+res://Entity/Player/CheckPoint.tscn::1560df7c0c5d628ba1d43f49cd8fb998::1742711859::res://.godot/exported/133200997/export-12a65b9bebdb9bff579e5326929c3054-CheckPoint.scn
+res://Entity/Player/DashDistortion.tscn::6ec00edde31fe055dc7a04b622a7bd97::1741591015::res://.godot/exported/133200997/export-b7a3db0ab4d8595ee83f0f09dda3bf28-DashDistortion.scn
+res://Entity/Player/Player.tscn::af4cf5a420919fe76a3cc217e9c045a7::1743333188::res://.godot/exported/133200997/export-bb4293ce276a78835061031a42fe8d7e-Player.scn
+res://Entity/bird_non_interactive.tscn::e693e284b882c234cb0edb42b1e89807::1742817579::res://.godot/exported/133200997/export-a61ffab1cf204857ea85d53cecf9e67e-bird_non_interactive.scn
+res://Entity/ground_animal_non_interactive.tscn::61e33de30a80e6b200e88dc0104311d8::1742728424::res://.godot/exported/133200997/export-485e3fa3d3d630c79123fc149fe5c5d8-ground_animal_non_interactive.scn
+res://World/Platform Types/Bouncing Platform/BouncingPlatform.tscn::f61d742bdc4f44a6e0dcd7bb6f99e1d2::1742710741::res://.godot/exported/133200997/export-38518afede6c9f172a8116b052b4f470-BouncingPlatform.scn
+res://World/Platform Types/MovingPlatform/MovingPlatform.tscn::11a11473dae52839277e62d0ce0f0d2c::1743057472::res://.godot/exported/133200997/export-f78158fc2c3fe3409c0d98984882e65e-MovingPlatform.scn
+res://World/Platform Types/Resetting Platform/ResettingPlatform.tscn::e36336a71261cc05bc85bacaf7f76b23::1740235888::res://.godot/exported/133200997/export-8c9cdbd0b514a9dfd8f60833ff4416d2-ResettingPlatform.scn
+res://World/Platform Types/controllable_platform.tscn::7c198a411f4af2869d98127e570d7751::1742740826::res://.godot/exported/133200997/export-3c3717f8f40c8ad7d4402a9ac15dff21-controllable_platform.scn
+res://World/MAIN_MENU.tscn::70efbeaac109505457a5259ae432424a::1742881460::res://.godot/exported/133200997/export-52dd94bfdf04807d9bc14383f07e8f30-MAIN_MENU.scn
+res://World/SpeedUp.tscn::d0d26f65c3dacd202934fef1d68a4dd7::1742826205::res://.godot/exported/133200997/export-338527c83706704f2b88bd890460f149-SpeedUp.scn
+res://World/water.tscn::3575aaa7d3b4caafb647b2368fcce69c::1742826205::res://.godot/exported/133200997/export-10669111b645efca6ea162c28445b0d1-water.scn
+res://World/World.tscn::0fbd21f7d2299d46c4064b2c543c3289::1743333185::res://.godot/exported/133200997/export-de71c21559ba3535c3f0645ed0c93644-World.scn

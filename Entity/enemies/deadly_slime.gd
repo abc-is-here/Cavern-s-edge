@@ -15,6 +15,8 @@ var cur_state = States.Walk
 @onready var blast_range: Area2D = $BlastRange
 @onready var dead_zone: Area2D = $DeadZone
 @onready var idle_timer: Timer = $IdleTimer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var blast_sprite: Sprite2D = $AnimatedSprite2D/blast
 
 var checkPointManager
 var Player
@@ -30,21 +32,20 @@ func _ready() -> void:
 	idle_timer.start()
 
 func _physics_process(delta: float) -> void:
-	# Gravity applies regardless of state
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	
 	match cur_state:
 		States.Walk:
-			handle_walk(delta)
+			handle_walk()
 		States.Idle:
-			velocity.x = 0  # Ensure no movement while idling
+			velocity.x = 0
 		States.Blast:
-			velocity = Vector2.ZERO  # Stop movement completely
+			velocity = Vector2.ZERO
 
 	move_and_slide()
 
-func handle_walk(delta: float) -> void:
+func handle_walk() -> void:
 	if not raycast_bottom.is_colliding() or raycast_wall.is_colliding():
 		change_direction()
 
@@ -58,17 +59,16 @@ func change_direction() -> void:
 	raycast_wall.target_position.x = 20 * direction
 
 func _on_idle_timer_timeout() -> void:
-	# Switch to idle state
+	if cur_state != States.Walk:
+		return
+	
 	cur_state = States.Idle
 	slime.play("idle")
-	$AnimationPlayer.play("collisionIdle")
 
-	await get_tree().create_timer(1).timeout  # Stay idle for a moment
+	await get_tree().create_timer(1).timeout
 
-	# Return to walking state
 	cur_state = States.Walk
 	slime.play("walk")
-	$AnimationPlayer.play("CollisionWalk")
 
 	idle_timer.wait_time = randf_range(2, 5)
 	idle_timer.start()
@@ -81,31 +81,33 @@ func start_blast(body: Node2D) -> void:
 	cur_state = States.Blast
 	player_in_range = body
 	velocity = Vector2.ZERO
-	slime.play("flash")
 
-	await get_tree().create_timer(1).timeout  # Flash before explosion
-	slime.play("blast")
-	await slime.animation_finished  # Wait for blast animation
+	await get_tree().create_timer(1).timeout
+	
+	# Ensure blast animation plays correctly
+	blast_sprite.visible = true
+	animation_player.play("blast")
+
+	await animation_player.animation_finished
 
 	if player_in_range != null and !Global.is_immune:
 		Global.emit_signal("shake_camera")
 		KillPlayer()
 
-	# Enemy disappears temporarily
+	# Hide the enemy and disable collision
 	visible = false
-	collision.disabled = true
+	collision.set_deferred("disabled", true)
 	blast_range.monitoring = false
 	dead_zone.monitoring = false
 
-	await get_tree().create_timer(4).timeout  # Wait before respawning
+	await get_tree().create_timer(4).timeout
 
-	# Respawn logic
 	reset_enemy()
 
 func reset_enemy():
 	position = start_position  
 	visible = true
-	collision.disabled = false
+	collision.set_deferred("disabled", false)
 	blast_range.monitoring = true
 	dead_zone.monitoring = true
 	cur_state = States.Walk
@@ -113,7 +115,8 @@ func reset_enemy():
 	player_in_range = null
 
 func KillPlayer():
-	Player.global_position = checkPointManager.lastLocation
+	if checkPointManager and checkPointManager.lastLocation:
+		Player.global_position = checkPointManager.lastLocation
 
 func _on_blast_range_body_exited(body: Node2D) -> void:
 	if body == player_in_range:

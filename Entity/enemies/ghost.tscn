@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg67poc7iwvlr"]
+
+[ext_resource type="Script" path="res://Entity/enemies/ghost.gd" id="1_k0hg8"]
+[ext_resource type="Texture2D" uid="uid://cj7q0hk53pigs" path="res://Assets/ghost-Sheet.png" id="2_jrj8f"]
+[ext_resource type="PackedScene" uid="uid://bbeanc4v8nole" path="res://Entity/obstacles/dead_zone.tscn" id="3_prifb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7wbh"]
+size = Vector2(1, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6lbm"]
+bg_color = Color(0.189951, 0.640635, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2620d"]
+bg_color = Color(0.871962, 0, 0.177539, 1)
+
+[sub_resource type="Animation" id="Animation_getpt"]
+resource_name = "Ghostanimation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2i3tf"]
+_data = {
+"Ghostanimation": SubResource("Animation_getpt")
+}
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_k0hg8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_jrj8f")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i7wbh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -69.0
+offset_right = 39.0
+offset_bottom = 72.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_t6lbm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2620d")
+fill_mode = 2
+show_percentage = false
+
+[node name="DeadZone" parent="." instance=ExtResource("3_prifb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeadZone"]
+shape = SubResource("RectangleShape2D_i7wbh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2i3tf")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

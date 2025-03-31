@@ -1,6 +1,7 @@
 class_name PlayerController extends CharacterBody2D
 
 @onready var Sprite = $Sprite
+@onready var reflection: Sprite2D = $reflection
 @onready var Animator = $Animator
 @onready var Collider = $Collider
 @onready var States = $StateMachine
@@ -45,7 +46,7 @@ var WallJumpVelocity = -190
 const WallJumpAcceleration = 5
 const WallJumpYSpeedPeak = 0
 const VariableJumpMultiplier = 0.5
-const MaxJumps = 1
+var MaxJumps = 1
 const CoyoteTime = 0.1
 const JumpBufferTime = 0.15
 
@@ -53,11 +54,9 @@ const ClimbSpeed = 30
 const MaxClimbStamina = 300
 const GrabStaminaCost = 1
 const ClimbStaminaCost = 2
-const PUSH_FORCE = 100
-const BLOCK_MAX_VELOCITY = 180
 var WallSlideSpeed = 40
 
-const MaxDashes = 1
+var MaxDashes = 1
 const DashSpeed = 300
 const DashDeceleration = 4
 const DashTime = 0.15
@@ -116,8 +115,10 @@ var previousState = null
 var nextState = null
 
 var swim_jump_velocity = -100
+var is_reversed = false
 
 func _ready():
+	reflection.visible = false
 	for state in States.get_children():
 		state.States = States
 		state.Player = self
@@ -142,17 +143,13 @@ func _physics_process(delta: float) -> void:
 	currentState.Update(delta)
 	HandleMaxFallVelocity()
 	UpdateSquish()
-
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collision_block = collision.get_collider()
-		if collision_block.is_in_group("box") and abs(collision_block.get_linear_velocity().x) < BLOCK_MAX_VELOCITY:
-			collision_block.apply_central_impulse(collision.get_normal() * -PUSH_FORCE)
 	move_and_slide()
 	movingPlatformSpeed = get_platform_velocity()
 
 	if (!movingPlatform):
 		movingPlatformCornerGrabPosition = Vector2.ZERO
+	
+	reflection.visible = Global.reflect
 
 func HorizontalMovement(acceleration: float = Acceleration, deceleration: float = Deceleration):
 	moveDirectionX = Input.get_axis("Left", "Right")
@@ -185,7 +182,7 @@ func HandleGravity(delta, gravity: float = GravityJump):
 
 func HandleJump():
 	if is_on_floor():
-		jumps = 0  # Reset jumps when touching the ground
+		jumps = 0
 		if jumps < MaxJumps and keyJumpPressed:
 			jumps += 1
 			ChangeState(States.Jump)
@@ -193,12 +190,12 @@ func HandleJump():
 			JumpBufferTimer.stop()
 			ChangeState(States.Jump)
 
-	elif Global.is_in_water:  # Swimming logic
+	elif Global.is_in_water:
 		if keyJumpPressed:
-			velocity.y = swim_jump_velocity  # Apply swimming jump velocity
-			jumps += 1  # Allow multiple jumps while in water
+			velocity.y = swim_jump_velocity
+			jumps += 1
 
-	else:  # Normal air jump logic
+	else:
 		if jumps < MaxJumps and jumps > 0 and keyJumpPressed:
 			jumps += 1
 			ChangeState(States.Jump)
@@ -386,19 +383,34 @@ func GetCanWallClimb():
 
 
 func GetInputStates():
-	keyUp = Input.is_action_pressed("Up")
-	keyUpPressed = Input.is_action_just_pressed("Up")
-	keyDown = Input.is_action_pressed("Down")
-	keyLeft = Input.is_action_pressed("Left")
-	keyRight = Input.is_action_pressed("Right")
-	keyJump = Input.is_action_pressed("Jump")
-	keyJumpPressed = Input.is_action_just_pressed("Jump")
-	keyClimb = Input.is_action_pressed("Climb")
-	keyDash = Input.is_action_just_pressed("Dash")
-	
-	if (keyLeft): facing = -1
-	if (keyRight): facing = 1
-	Sprite.flip_h = (facing < 0)
+	if !is_reversed:
+		keyUp = Input.is_action_pressed("Up")
+		keyUpPressed = Input.is_action_just_pressed("Up")
+		keyDown = Input.is_action_pressed("Down")
+		keyLeft = Input.is_action_pressed("Left")
+		keyRight = Input.is_action_pressed("Right")
+		keyJump = Input.is_action_pressed("Jump")
+		keyJumpPressed = Input.is_action_just_pressed("Jump")
+		keyClimb = Input.is_action_pressed("Climb")
+		keyDash = Input.is_action_just_pressed("Dash")
+		
+		if (keyLeft): facing = -1
+		if (keyRight): facing = 1
+		Sprite.flip_h = (facing < 0)
+		reflection.flip_h = facing < 0
+	elif is_reversed:
+		keyUp = Input.is_action_pressed("Up")
+		keyUpPressed = Input.is_action_just_pressed("Up")
+		keyDown = Input.is_action_pressed("Down")
+		keyLeft = Input.is_action_pressed("Left")
+		keyRight = Input.is_action_pressed("Right")
+		keyJump = Input.is_action_pressed("Jump")
+		keyJumpPressed = Input.is_action_just_pressed("Jump")
+		
+		if (keyLeft): facing = 1
+		if (keyRight): facing = -1
+		Sprite.flip_h = (facing < 0)
+		reflection.flip_h = facing < 0
 
 
 func ChangeState(nextState):
@@ -425,6 +437,8 @@ func IsRayCastCollidingMovingPlatform(_ray: RayCast2D) -> bool:
 func UpdateSquish():
 	Sprite.scale.x = squishX
 	Sprite.scale.y = squishY
+	reflection.scale.x = squishX
+	reflection.scale.y = squishY
 	
 	if (squishX != 1.0):
 		squishX = move_toward(squishX, 1.0, squishStep)
@@ -439,3 +453,4 @@ func SetSquish(_squishX: float = 1.0, _squishY: float = 1.0, _step: float = 0.02
 
 func HandleFlipH():
 	Sprite.flip_h = (facing < 1)
+	reflection.flip_h = (facing < 1)

@@ -13,7 +13,7 @@ func EnterState():
 	elif (Player.RCLedgeRightLower.is_colliding()):
 		Player.ledgeDirection = Vector2.RIGHT
 
-	ledgeGrabSnapPosition = Vector2(Player.cornerGrabPosition.x + (Player.ledgeDirection.x * -1), Player.cornerGrabPosition.y + 6)
+	ledgeGrabSnapPosition = Vector2(Player.cornerGrabPosition.x + (Player.ledgeDirection.x * -1) + 15, Player.cornerGrabPosition.y + 6)
 	var adjustment: Vector2 = Vector2(Player.ledgeDirection.x * -1, 6)
 	Player.movingPlatformCornerGrabPosition += adjustment
 
